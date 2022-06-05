@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
+    [Range(1, 6)]
     public int answerCount = 4;
-    public List<AnswerCard> answerCards;
-    public GameDatabase.GameMetadata chosenGame;
-    public string selectedAnswer;
 
     [SerializeField]
     private GameDatabase database;
@@ -20,22 +18,34 @@ public class QuizManager : MonoBehaviour
     [SerializeField]
     private Image hudGraphicImage;
 
+    private GameDatabase.GameMetadata chosenGame;
+    private string selectedAnswer;
+    private List<AnswerCard> answerCards;
+    private bool isListInit = false;
+
     void Start()
     {
-        InitRandomGame();
-        SpawnAnswerCards();
-        InitAnswers();
+        //InitRandomGame();
     }
 
     public void InitRandomGame()
     {
         chosenGame = database.GetRandomGame();
         hudGraphicImage.sprite = chosenGame.hudGraphic;
+
+        SpawnAnswerCards();
+        InitAnswers();
     }
 
     public void SpawnAnswerCards()
     {
-        for (int i = 0; i < answerCount; i++)
+        if (!isListInit)
+        {
+            answerCards = new List<AnswerCard>();
+            isListInit = true;
+        }
+
+        while (answerCards.Count < answerCount)
         {
             AnswerCard _answerCard = Instantiate(answerCardPrefab);
             _answerCard.transform.SetParent(answerCardContainer);
