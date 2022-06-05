@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class AnswerButton : MonoBehaviour
+public class AnswerCard : MonoBehaviour
 {
-    public string id;
+    public struct AnswerInfo
+    {
+        public string id;
+        public string displayName;
+    }
+
+    public AnswerInfo answerInfo;
 
     [SerializeField]
     private TMP_Text buttonText;
@@ -16,15 +22,17 @@ public class AnswerButton : MonoBehaviour
 
     public void Initialize(string _id, string _displayName, QuizManager _manager)
     {
-        marker.SetActive(false);
-        id = _id;
-        buttonText.text = _displayName;
+        answerInfo.id = _id;
+        answerInfo.displayName = _displayName;
         manager = _manager;
+
+        marker.SetActive(false);
+        buttonText.text = answerInfo.displayName;
     }
 
     public void SelectGame()
     {
-        manager.SelectAnswer(id);
+        manager.SelectAnswer(answerInfo.id);
     }
 
     public void Select()

@@ -88,10 +88,10 @@ GameObject:
   - component: {fileID: 8509166554856035757}
   - component: {fileID: 8509166554856035756}
   - component: {fileID: 4613331957241546467}
-  - component: {fileID: 8509166554856035746}
+  - component: {fileID: 1594175141181272020}
   - component: {fileID: 3630025776714328413}
   m_Layer: 5
-  m_Name: AnswerButton
+  m_Name: AnswerCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,8 +201,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8509166554856035746}
-        m_TargetAssemblyTypeName: AnswerButton, Assembly-CSharp
+      - m_Target: {fileID: 1594175141181272020}
+        m_TargetAssemblyTypeName: AnswerCard, Assembly-CSharp
         m_MethodName: SelectGame
         m_Mode: 1
         m_Arguments:
@@ -213,7 +213,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8509166554856035746
+--- !u!114 &1594175141181272020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,7 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b825248c5e67db4cbd78b27a6adfb4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
   buttonText: {fileID: 8509166555018851303}
   marker: {fileID: 2785546872204412156}
 --- !u!114 &3630025776714328413

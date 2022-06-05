@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 1106585724}
   - component: {fileID: 1106585726}
   m_Layer: 5
-  m_Name: AnswerButtons
+  m_Name: AnswerCardContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87621ef22a86cb439c348a00ce42f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerButtons: []
+  answerCards: []
   chosenGame:
     id: 
     displayName: 
@@ -511,8 +511,8 @@ MonoBehaviour:
     wrongAnswers: []
   selectedAnswer: 
   database: {fileID: 11400000, guid: cf36e95f206f25f438a9c7b42888f591, type: 2}
-  answerButtonPrefab: {fileID: 8509166554856035746, guid: 6c9eac36a3b757c42b806449f0810b43, type: 3}
-  buttonContainer: {fileID: 1106585721}
+  answerCardPrefab: {fileID: 1594175141181272020, guid: 6c9eac36a3b757c42b806449f0810b43, type: 3}
+  answerCardContainer: {fileID: 1106585721}
   hudGraphicImage: {fileID: 216983947}
 --- !u!114 &1106585726
 MonoBehaviour:
