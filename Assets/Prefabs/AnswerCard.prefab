@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6490690649666157419}
   - component: {fileID: 6665605373643593101}
   - component: {fileID: 4225809433662141654}
+  - component: {fileID: 882693577112507323}
+  - component: {fileID: 490699396059477058}
   m_Layer: 5
   m_Name: Marker
   m_TagString: Untagged
@@ -76,6 +78,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &882693577112507323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785546872204412156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f777e65ce057c1d4e8053b4a7ea4e988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_canvas: {fileID: 490699396059477058}
+  m_tweenSettings:
+    m_tweenDelay: 0
+    m_tweenInterval: 0
+    m_fadeDuration: 0.2
+    m_fadeEndAlpha: 1
+    m_scaleDuration: 0.35
+    m_scaleStart: {x: 2, y: 2, z: 1}
+    m_scaleEnd: {x: 1, y: 1, z: 1}
+    m_scaleEase: 27
+--- !u!225 &490699396059477058
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785546872204412156}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8509166554856035753
 GameObject:
   m_ObjectHideFlags: 0
