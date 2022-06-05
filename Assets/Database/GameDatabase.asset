@@ -43,4 +43,58 @@ MonoBehaviour:
     - Borderlands 2
     - BioShock
     - 'Fallout: New Vegas'
-    - Blasphemous
+    - Doom Eternal
+  - id: godofwar-4
+    displayName: God of War (2018)
+    hudGraphic: {fileID: 21300000, guid: 8a7eb170d2a2f5546bd67e1dced40cfc, type: 3}
+    wrongAnswers:
+    - 'The Elder Scrolls: Skyrim'
+    - 'Dragon Age: Inquisition'
+    - 'Dragon Age: Origins'
+    - Assassin's Creed Origins
+    - Horizon Zero Dawn
+  - id: hades
+    displayName: Hades
+    hudGraphic: {fileID: 21300000, guid: 0b5fe1a754301a242aa94cc5554ccdc8, type: 3}
+    wrongAnswers:
+    - Transistor
+    - Bastion
+    - Elden Ring
+    - Assassin's Creed Origins
+    - Dead Cells
+  - id: halo-infinite
+    displayName: Halo Infinite
+    hudGraphic: {fileID: 21300000, guid: 7205a0fc6b41111438db1b163fee28b8, type: 3}
+    wrongAnswers:
+    - Metroid Prime
+    - Doom (2018)
+    - Borderlands 2
+    - Halo 4
+    - Destiny
+  - id: hollow-knight
+    displayName: Hollow Knight
+    hudGraphic: {fileID: 21300000, guid: 5ddf1df5619006d4eb2f1193a7b78839, type: 3}
+    wrongAnswers:
+    - Cuphead
+    - Twilight Princess
+    - Skyward Sword
+    - Dead Cells
+    - 'Bloodstained: Ritual of the Night'
+  - id: horizon-zerodawn
+    displayName: Horizon Zero Dawn
+    hudGraphic: {fileID: 21300000, guid: bcf3649c1f64b25419e342cc1af4b738, type: 3}
+    wrongAnswers:
+    - Horizon Forbidden West
+    - God of War (2018)
+    - 'The Elder Scrolls: Skyrim'
+    - Assassin's Creed Origins
+    - Elden Ring
+  - id: kingdomhearts
+    displayName: Kingdom Hearts
+    hudGraphic: {fileID: 21300000, guid: 281485379ce3a5f4e93bcdeaaed9028a, type: 3}
+    wrongAnswers:
+    - Ni No Kuni II
+    - Super Mario Sunshine
+    - The World Ends With You
+    - Final Fantasy 7
+    - Dark Cloud 2
