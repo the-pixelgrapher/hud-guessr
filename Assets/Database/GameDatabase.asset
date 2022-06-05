@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: GameDatabase
   m_EditorClassIdentifier: 
   gameData:
-  - id: 
-    displayName: 
-    hudGraphic: {fileID: 0}
-    wrongAnswers: []
   - id: apex-legends
     displayName: Apex Legends
     hudGraphic: {fileID: 21300000, guid: 82331dc956734cc4e829c85dc1d1de76, type: 3}
@@ -96,5 +92,50 @@ MonoBehaviour:
     - Ni No Kuni II
     - Super Mario Sunshine
     - The World Ends With You
-    - Final Fantasy 7
+    - Final Fantasy VII
     - Dark Cloud 2
+  - id: mario-odyssey
+    displayName: Super Mario Odyssey
+    hudGraphic: {fileID: 21300000, guid: 3bea646f04900cf4cba9eb87350ab79c, type: 3}
+    wrongAnswers:
+    - Kingdom Hearts 2
+    - Kingdom Hearts 3
+    - Breath of the Wild
+    - Hollow Knight
+    - Cuphead
+  - id: sekiro
+    displayName: Sekiro
+    hudGraphic: {fileID: 21300000, guid: fa1aec3125d998a4aa9f186d1b15db8e, type: 3}
+    wrongAnswers:
+    - Dark Souls 3
+    - Horizon Forbidden West
+    - Ghost of Tsushima
+    - Nioh
+    - 'The Elder Scrolls: Oblivion'
+  - id: witcher-3
+    displayName: The Witcher 3
+    hudGraphic: {fileID: 21300000, guid: 09f52f4499f5c554f9120bebb8f01e96, type: 3}
+    wrongAnswers:
+    - Darksiders
+    - 'Monster Hunter: Rise'
+    - Monster Hunter World
+    - The Witcher 2
+    - Ashen
+  - id: xenoblade-x
+    displayName: Xenoblade Chronicles X
+    hudGraphic: {fileID: 21300000, guid: 72381aec31ae1304bb9287efb27180ee, type: 3}
+    wrongAnswers:
+    - Dauntless
+    - 'Monster Hunter: Rise'
+    - Xenoblade Chronicles 2
+    - 'Fire Emblem: Three Houses'
+    - Final Fantasy XIV
+  - id: zelda-botw
+    displayName: Xenoblade Chronicles X
+    hudGraphic: {fileID: 21300000, guid: 254ae7ab19816334c972da86d937e54a, type: 3}
+    wrongAnswers:
+    - Minecraft
+    - Genshin Impact
+    - 'Hyrule Warriors: Age of Calamity'
+    - 'Fire Emblem: Three Houses'
+    - The Witcher 3
