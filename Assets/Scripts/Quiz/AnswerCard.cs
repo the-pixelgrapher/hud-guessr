@@ -18,9 +18,9 @@ public class AnswerCard : MonoBehaviour
     [SerializeField]
     private GameObject marker;
 
-    private QuizManager manager;
+    private MultiChoiceAnswer manager;
 
-    public void Initialize(string _id, string _displayName, QuizManager _manager)
+    public void Initialize(string _id, string _displayName, MultiChoiceAnswer _manager)
     {
         answerInfo.id = _id;
         answerInfo.displayName = _displayName;

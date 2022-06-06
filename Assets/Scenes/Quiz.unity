@@ -220,24 +220,61 @@ RectTransform:
   - {fileID: 1106585721}
   - {fileID: 421910171}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &216983947 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5271667815361451943, guid: 5eaa5e2d0f7bb354bb55eeaca6d49ecb, type: 3}
-  m_PrefabInstance: {fileID: 5271667815430258220}
+--- !u!1 &147680982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 147680983}
+  - component: {fileID: 147680984}
+  m_Layer: 0
+  m_Name: QuizManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &147680983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147680982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &147680984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147680982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: d87621ef22a86cb439c348a00ce42f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMode: 0
+  database: {fileID: 11400000, guid: cf36e95f206f25f438a9c7b42888f591, type: 2}
+  graphic: {fileID: 5271667815430258221}
+  multiChoiceAnswer: {fileID: 1106585727}
 --- !u!1 &421910170
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +358,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1106585725}
+      - m_Target: {fileID: 147680984}
         m_TargetAssemblyTypeName: QuizManager, Assembly-CSharp
         m_MethodName: InitRandomGame
         m_Mode: 1
@@ -436,7 +473,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1058125484
 GameObject:
@@ -471,10 +508,10 @@ RectTransform:
   m_Father: {fileID: 87509481}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0.74, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 0.5}
-  m_SizeDelta: {x: -32, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.74, y: 1}
+  m_AnchoredPosition: {x: 16, y: 0}
+  m_SizeDelta: {x: -32, y: -216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1058125487
 CanvasRenderer:
@@ -494,9 +531,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1106585721}
   - component: {fileID: 1106585723}
-  - component: {fileID: 1106585725}
   - component: {fileID: 1106585724}
   - component: {fileID: 1106585726}
+  - component: {fileID: 1106585727}
   m_Layer: 5
   m_Name: AnswerCardContainer
   m_TagString: Untagged
@@ -560,23 +597,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &1106585725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106585720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d87621ef22a86cb439c348a00ce42f48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  answerCount: 4
-  database: {fileID: 11400000, guid: cf36e95f206f25f438a9c7b42888f591, type: 2}
-  answerCardPrefab: {fileID: 1594175141181272020, guid: 6c9eac36a3b757c42b806449f0810b43, type: 3}
-  answerCardContainer: {fileID: 1106585721}
-  hudGraphicImage: {fileID: 216983947}
 --- !u!114 &1106585726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,6 +611,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1106585727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106585720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596ceaee33c5b7c40b595dbff4d4e510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerCount: 4
+  answerCardPrefab: {fileID: 1594175141181272020, guid: 6c9eac36a3b757c42b806449f0810b43, type: 3}
+  answerCardContainer: {fileID: 1106585721}
 --- !u!1 &1315634117
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +991,11 @@ PrefabInstance:
     - target: {fileID: 6225537183012198544, guid: 6a73d7b144fc5c4439843e2447189c4b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1106585725}
+      objectReference: {fileID: 147680984}
+    - target: {fileID: 6225537183012198544, guid: 6a73d7b144fc5c4439843e2447189c4b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Guess
+      objectReference: {fileID: 0}
     - target: {fileID: 6225537183012198545, guid: 6a73d7b144fc5c4439843e2447189c4b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1144,6 +1183,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eaa5e2d0f7bb354bb55eeaca6d49ecb, type: 3}
+--- !u!114 &5271667815430258221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2036289841054958277, guid: 5eaa5e2d0f7bb354bb55eeaca6d49ecb, type: 3}
+  m_PrefabInstance: {fileID: 5271667815430258220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1631a2df87568a1498be890ac1a391e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8509166553292855992 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6225537183012198545, guid: 6a73d7b144fc5c4439843e2447189c4b, type: 3}
