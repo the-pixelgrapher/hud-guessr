@@ -11,10 +11,8 @@ public class AnswerCard : MonoBehaviour
 
     public AnswerInfo answerInfo;
 
-    [SerializeField]
-    private TMP_Text buttonText;
-    [SerializeField]
-    private GameObject marker;
+    [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private GameObject marker;
 
     private MultiChoiceAnswer manager;
 

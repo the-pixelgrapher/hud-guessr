@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuizManager : MonoBehaviour
 {
@@ -13,15 +14,14 @@ public class QuizManager : MonoBehaviour
     public GameMode gameMode;
     public int numberOfRounds = 5;
 
-    [SerializeField]
-    private GameDatabase database;
-    [SerializeField]
-    private GameHistory history;
+    [SerializeField] private GameDatabase database;
+    [SerializeField] private GameHistory history;
 
-    [SerializeField]
-    private HUDGraphic[] hudGraphics;
-    [SerializeField]
-    private MultiChoiceAnswer multiChoiceAnswer;
+    [SerializeField]  private HUDGraphic[] hudGraphics;
+    [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
+    [SerializeField] Window correctAnswerWindow;
+    [SerializeField] Window incorrectAnswerWindow;
+    [SerializeField] TMP_Text correctAnswerText;
 
     private List<GameDatabase.GameMetadata> gameList;
     private GameDatabase.GameMetadata chosenGame;
@@ -83,13 +83,23 @@ public class QuizManager : MonoBehaviour
         }
     }
 
+    private void BeginCorrectAnswerSequence()
+    {
+        correctAnswerWindow.OpenWindow();
+    }
+    private void BeginWrongAnswerSequence()
+    {
+        incorrectAnswerWindow.OpenWindow();
+        correctAnswerText.text = "The game was: " + chosenGame.displayName;
+    }
+
     public void Guess()
     {
         switch (gameMode)
         {
             case GameMode.MultiChoice:
-                if (multiChoiceAnswer.TestAnswer()) {Debug.Log("Correct!");}
-                else{Debug.Log("Incorrect. Correct answer was: " + chosenGame.displayName);}
+                if (multiChoiceAnswer.TestAnswer()) { BeginCorrectAnswerSequence(); }
+                else{ BeginWrongAnswerSequence(); }
                 break;
 
             case GameMode.TextField:

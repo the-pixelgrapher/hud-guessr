@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6225537183012198633}
   - component: {fileID: 6225537183012198632}
   m_Layer: 5
-  m_Name: GuessButton
+  m_Name: CTAButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Guess
+  m_text: Button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 188952ab08ed39e4f8c53f41aef14540, type: 2}
   m_sharedMaterial: {fileID: -3713952692522904278, guid: 188952ab08ed39e4f8c53f41aef14540, type: 2}

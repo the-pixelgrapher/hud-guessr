@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MultiChoiceAnswer : MonoBehaviour
 {
-    [Range(1, 6)]
-    public int answerCount = 4;
+    [Range(1, 6)] public int answerCount = 4;
 
-    [SerializeField]
-    private AnswerCard answerCardPrefab;
-    [SerializeField]
-    private Transform answerCardContainer;
+    [SerializeField] private AnswerCard answerCardPrefab;
+    [SerializeField] private Transform answerCardContainer;
+    [SerializeField] private Button guessButton;
 
     private GameDatabase.GameMetadata chosenGame;
     private string selectedAnswer;
     private List<AnswerCard> answerCards;
     private bool isListInit = false;
+
+    private void Start()
+    {
+        guessButton.interactable = false;
+    }
 
     public void InitGameData(GameDatabase.GameMetadata _gameData)
     {
@@ -105,6 +109,8 @@ public class MultiChoiceAnswer : MonoBehaviour
 
     public void SelectAnswer(string _id)
     {
+        guessButton.interactable = true;
+
         selectedAnswer = _id;
         for (int i = 0; i < answerCards.Count; i++)
         {

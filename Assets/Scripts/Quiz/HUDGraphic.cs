@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class HUDGraphic : MonoBehaviour
 {
-    [SerializeField]
-    private Image hudGraphicImage;
+    [SerializeField] private Image hudGraphicImage;
 
     public void InitHUDImage(GameDatabase.GameMetadata _gameData)
     {
