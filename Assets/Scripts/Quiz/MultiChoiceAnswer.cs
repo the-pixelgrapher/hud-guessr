@@ -19,6 +19,7 @@ public class MultiChoiceAnswer : MonoBehaviour
     private void Start()
     {
         guessButton.interactable = false;
+        QuizManager.current.initGameData += InitGameData;
     }
 
     public void InitGameData(GameDatabase.Metadata _gameData)

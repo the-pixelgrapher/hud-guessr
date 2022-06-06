@@ -280,8 +280,6 @@ MonoBehaviour:
   numberOfRounds: 100
   database: {fileID: 11400000, guid: cf36e95f206f25f438a9c7b42888f591, type: 2}
   history: {fileID: 147680985}
-  hudGraphics:
-  - {fileID: 5271667815430258221}
   multiChoiceAnswer: {fileID: 1106585727}
   correctAnswerWindow: {fileID: 1407214682}
   incorrectAnswerWindow: {fileID: 1469974275}
@@ -1997,17 +1995,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eaa5e2d0f7bb354bb55eeaca6d49ecb, type: 3}
---- !u!114 &5271667815430258221 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2036289841054958277, guid: 5eaa5e2d0f7bb354bb55eeaca6d49ecb, type: 3}
-  m_PrefabInstance: {fileID: 5271667815430258220}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1631a2df87568a1498be890ac1a391e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8509166553292855992 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6225537183012198545, guid: 6a73d7b144fc5c4439843e2447189c4b, type: 3}

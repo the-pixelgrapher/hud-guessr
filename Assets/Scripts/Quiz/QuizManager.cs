@@ -12,11 +12,11 @@ public class QuizManager : MonoBehaviour
 
     public GameMode gameMode;
     public int numberOfRounds = 5;
+    public static QuizManager current;
 
     [SerializeField] private GameDatabase database;
     [SerializeField] private GameHistory history;
 
-    [SerializeField]  private HUDGraphic[] hudGraphics;
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
     [SerializeField] Window correctAnswerWindow;
     [SerializeField] Window incorrectAnswerWindow;
@@ -25,10 +25,13 @@ public class QuizManager : MonoBehaviour
     private List<GameDatabase.Metadata> gameList;
     private GameDatabase.Metadata chosenGame;
 
-    void Start()
+    private void Awake()
     {
+        current = this;
         gameList = new List<GameDatabase.Metadata>();
     }
+
+    public event System.Action<GameDatabase.Metadata> initGameData;
 
     private void GenerateGameList()
     {
@@ -66,20 +69,7 @@ public class QuizManager : MonoBehaviour
 
         history.AddEntry(chosenGame);
 
-        foreach (HUDGraphic _graphic in hudGraphics)
-        {
-            _graphic.InitHUDImage(chosenGame);
-        }
-
-        switch (gameMode)
-        {
-            case GameMode.MultiChoice:
-                multiChoiceAnswer.InitGameData(chosenGame);
-                break;
-
-            case GameMode.TextField:
-                break;
-        }
+        initGameData(chosenGame);
     }
 
     private void BeginCorrectAnswerSequence()
