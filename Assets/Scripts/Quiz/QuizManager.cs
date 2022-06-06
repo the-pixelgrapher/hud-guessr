@@ -40,9 +40,6 @@ public class QuizManager : MonoBehaviour
 
             case GameMode.TextField:
                 break;
-
-            default:
-                break;
         }
     }
 
@@ -52,20 +49,11 @@ public class QuizManager : MonoBehaviour
         switch (gameMode)
         {
             case GameMode.MultiChoice:
-                if (multiChoiceAnswer.TestAnswer())
-                {
-                    Debug.Log("Correct!");
-                }
-                else
-                {
-                    Debug.Log("Incorrect. Correct answer was: " + chosenGame.displayName);
-                }
+                if (multiChoiceAnswer.TestAnswer()) {Debug.Log("Correct!");}
+                else{Debug.Log("Incorrect. Correct answer was: " + chosenGame.displayName);}
                 break;
 
             case GameMode.TextField:
-                break;
-
-            default:
                 break;
         }
     }
