@@ -16,6 +16,9 @@ MonoBehaviour:
   - id: apex-legends
     displayName: Apex Legends
     hudGraphic: {fileID: 21300000, guid: 82331dc956734cc4e829c85dc1d1de76, type: 3}
+    acceptedAnswers:
+    - apex
+    - apexlegends
     wrongAnswers:
     - Halo Infinite
     - Valorant
@@ -25,6 +28,8 @@ MonoBehaviour:
   - id: bloodborne
     displayName: Bloodborne
     hudGraphic: {fileID: 21300000, guid: 6bb9c08bd71918e489b267e5bf6f1c0c, type: 3}
+    acceptedAnswers:
+    - blood borne
     wrongAnswers:
     - Elden Ring
     - Dark Souls 3
@@ -34,6 +39,8 @@ MonoBehaviour:
   - id: borderlands-3
     displayName: Borderlands 3
     hudGraphic: {fileID: 21300000, guid: 0dbdac7a0b00b3643b92c2ca0da730a8, type: 3}
+    acceptedAnswers:
+    - borderlands3
     wrongAnswers:
     - Borderlands
     - Borderlands 2
@@ -43,6 +50,10 @@ MonoBehaviour:
   - id: godofwar-4
     displayName: God of War (2018)
     hudGraphic: {fileID: 21300000, guid: 8a7eb170d2a2f5546bd67e1dced40cfc, type: 3}
+    acceptedAnswers:
+    - god of war
+    - gow
+    - gow4
     wrongAnswers:
     - 'The Elder Scrolls: Skyrim'
     - 'Dragon Age: Inquisition'
@@ -52,6 +63,7 @@ MonoBehaviour:
   - id: hades
     displayName: Hades
     hudGraphic: {fileID: 21300000, guid: 0b5fe1a754301a242aa94cc5554ccdc8, type: 3}
+    acceptedAnswers: []
     wrongAnswers:
     - Transistor
     - Bastion
@@ -61,6 +73,7 @@ MonoBehaviour:
   - id: halo-infinite
     displayName: Halo Infinite
     hudGraphic: {fileID: 21300000, guid: 7205a0fc6b41111438db1b163fee28b8, type: 3}
+    acceptedAnswers: []
     wrongAnswers:
     - Metroid Prime
     - Doom (2018)
@@ -70,6 +83,9 @@ MonoBehaviour:
   - id: hollow-knight
     displayName: Hollow Knight
     hudGraphic: {fileID: 21300000, guid: 5ddf1df5619006d4eb2f1193a7b78839, type: 3}
+    acceptedAnswers:
+    - hollow
+    - hk
     wrongAnswers:
     - Cuphead
     - Twilight Princess
@@ -79,6 +95,9 @@ MonoBehaviour:
   - id: horizon-zerodawn
     displayName: Horizon Zero Dawn
     hudGraphic: {fileID: 21300000, guid: bcf3649c1f64b25419e342cc1af4b738, type: 3}
+    acceptedAnswers:
+    - horizon
+    - hzd
     wrongAnswers:
     - Horizon Forbidden West
     - God of War (2018)
@@ -88,6 +107,7 @@ MonoBehaviour:
   - id: kingdomhearts
     displayName: Kingdom Hearts
     hudGraphic: {fileID: 21300000, guid: 281485379ce3a5f4e93bcdeaaed9028a, type: 3}
+    acceptedAnswers: []
     wrongAnswers:
     - Ni No Kuni II
     - Super Mario Sunshine
@@ -97,6 +117,9 @@ MonoBehaviour:
   - id: mario-odyssey
     displayName: Super Mario Odyssey
     hudGraphic: {fileID: 21300000, guid: 3bea646f04900cf4cba9eb87350ab79c, type: 3}
+    acceptedAnswers:
+    - mario odyssey
+    - smo
     wrongAnswers:
     - Kingdom Hearts 2
     - Kingdom Hearts 3
@@ -106,6 +129,7 @@ MonoBehaviour:
   - id: sekiro
     displayName: Sekiro
     hudGraphic: {fileID: 21300000, guid: fa1aec3125d998a4aa9f186d1b15db8e, type: 3}
+    acceptedAnswers: []
     wrongAnswers:
     - Dark Souls 3
     - Horizon Forbidden West
@@ -115,6 +139,8 @@ MonoBehaviour:
   - id: witcher-3
     displayName: The Witcher 3
     hudGraphic: {fileID: 21300000, guid: 09f52f4499f5c554f9120bebb8f01e96, type: 3}
+    acceptedAnswers:
+    - wild hunt
     wrongAnswers:
     - Darksiders
     - 'Monster Hunter: Rise'
@@ -124,6 +150,9 @@ MonoBehaviour:
   - id: xenoblade-x
     displayName: Xenoblade Chronicles X
     hudGraphic: {fileID: 21300000, guid: 72381aec31ae1304bb9287efb27180ee, type: 3}
+    acceptedAnswers:
+    - xenoblade 10
+    - xenoblade x
     wrongAnswers:
     - Dauntless
     - 'Monster Hunter: Rise'
@@ -131,8 +160,10 @@ MonoBehaviour:
     - 'Fire Emblem: Three Houses'
     - Final Fantasy XIV
   - id: zelda-botw
-    displayName: Xenoblade Chronicles X
+    displayName: Breath of the Wild
     hudGraphic: {fileID: 21300000, guid: 254ae7ab19816334c972da86d937e54a, type: 3}
+    acceptedAnswers:
+    - botw
     wrongAnswers:
     - Minecraft
     - Genshin Impact
