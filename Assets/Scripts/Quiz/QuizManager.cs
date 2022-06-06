@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
@@ -16,7 +15,10 @@ public class QuizManager : MonoBehaviour
     [SerializeField]
     private GameDatabase database;
     [SerializeField]
-    private HUDGraphic graphic;
+    private GameHistory history;
+
+    [SerializeField]
+    private HUDGraphic[] hudGraphics;
     [SerializeField]
     private MultiChoiceAnswer multiChoiceAnswer;
 
@@ -30,7 +32,10 @@ public class QuizManager : MonoBehaviour
     public void InitRandomGame()
     {
         chosenGame = database.GetRandomGame();
-        graphic.InitHUDImage(chosenGame);
+        foreach (HUDGraphic _graphic in hudGraphics)
+        {
+            _graphic.InitHUDImage(chosenGame);
+        }
 
         switch (gameMode)
         {
@@ -42,7 +47,6 @@ public class QuizManager : MonoBehaviour
                 break;
         }
     }
-
 
     public void Guess()
     {

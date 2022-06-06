@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,5 +11,4 @@ public class HUDGraphic : MonoBehaviour
         hudGraphicImage.sprite = _gameData.hudGraphic;
         Debug.Log("Loaded HUD graphic for: " + _gameData.id);
     }
-
 }

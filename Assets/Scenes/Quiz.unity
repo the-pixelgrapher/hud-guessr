@@ -237,6 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 147680983}
   - component: {fileID: 147680984}
+  - component: {fileID: 147680985}
   m_Layer: 0
   m_Name: QuizManager
   m_TagString: Untagged
@@ -273,8 +274,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMode: 0
   database: {fileID: 11400000, guid: cf36e95f206f25f438a9c7b42888f591, type: 2}
-  graphic: {fileID: 5271667815430258221}
+  history: {fileID: 147680985}
+  hudGraphics:
+  - {fileID: 5271667815430258221}
   multiChoiceAnswer: {fileID: 1106585727}
+--- !u!114 &147680985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147680982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b619489645b81b49aef73c29ccaf73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &421910170
 GameObject:
   m_ObjectHideFlags: 0

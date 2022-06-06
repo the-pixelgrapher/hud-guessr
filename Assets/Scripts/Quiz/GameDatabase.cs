@@ -9,6 +9,7 @@ public class GameDatabase : ScriptableObject
         public string id;
         public string displayName;
         public Sprite hudGraphic;
+        public string[] acceptedAnswers;
         public string[] wrongAnswers;
     }
 
