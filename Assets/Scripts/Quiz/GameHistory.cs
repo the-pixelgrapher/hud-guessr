@@ -7,13 +7,13 @@ public class GameHistory : MonoBehaviour
     [System.Serializable]
     public struct History
     {
-        public GameDatabase.GameMetadata game;
+        public GameDatabase.Metadata game;
         public int timesShown;
     }
 
     public List<History> historyEntry;
 
-    public void AddEntry(GameDatabase.GameMetadata _game)
+    public void AddEntry(GameDatabase.Metadata _game)
     {
         bool _entryAdded = false;
 

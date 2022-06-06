@@ -22,23 +22,23 @@ public class QuizManager : MonoBehaviour
     [SerializeField] Window incorrectAnswerWindow;
     [SerializeField] TMP_Text correctAnswerText;
 
-    private List<GameDatabase.GameMetadata> gameList;
-    private GameDatabase.GameMetadata chosenGame;
+    private List<GameDatabase.Metadata> gameList;
+    private GameDatabase.Metadata chosenGame;
 
     void Start()
     {
-        gameList = new List<GameDatabase.GameMetadata>();
+        gameList = new List<GameDatabase.Metadata>();
     }
 
     private void GenerateGameList()
     {
         // Generate a random list of games of a specified amount
-        gameList = new List<GameDatabase.GameMetadata>();
+        gameList = new List<GameDatabase.Metadata>();
         int _amount = numberOfRounds;
         _amount = Mathf.Clamp(_amount, 1, database.gameData.Length);
 
         // Add all games to temp collection
-        var _tempList = new List<GameDatabase.GameMetadata>();
+        var _tempList = new List<GameDatabase.Metadata>();
         for (int i = 0; i < database.gameData.Length; i++)
         {
             _tempList.Add(database.gameData[i]);

@@ -11,7 +11,7 @@ public class MultiChoiceAnswer : MonoBehaviour
     [SerializeField] private Transform answerCardContainer;
     [SerializeField] private Button guessButton;
 
-    private GameDatabase.GameMetadata chosenGame;
+    private GameDatabase.Metadata chosenGame;
     private string selectedAnswer;
     private List<AnswerCard> answerCards;
     private bool isListInit = false;
@@ -21,7 +21,7 @@ public class MultiChoiceAnswer : MonoBehaviour
         guessButton.interactable = false;
     }
 
-    public void InitGameData(GameDatabase.GameMetadata _gameData)
+    public void InitGameData(GameDatabase.Metadata _gameData)
     {
         chosenGame = _gameData;
 

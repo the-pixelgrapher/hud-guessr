@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameDatabase : ScriptableObject
 {
     [System.Serializable]
-    public struct GameMetadata
+    public struct Metadata
     {
         public string id;
         public string displayName;
@@ -13,7 +13,7 @@ public class GameDatabase : ScriptableObject
         public string[] wrongAnswers;
     }
 
-    public GameMetadata[] gameData;
+    public Metadata[] gameData;
 
     public int GetIndexFromID(string _id)
     {
@@ -35,13 +35,13 @@ public class GameDatabase : ScriptableObject
         return _index;
     }
 
-    public GameMetadata GetGameData(string _id)
+    public Metadata GetGameData(string _id)
     {
-        GameMetadata _metaData = gameData[GetIndexFromID(_id)];
+        Metadata _metaData = gameData[GetIndexFromID(_id)];
         return _metaData;
     }
 
-    public GameMetadata GetRandomGame()
+    public Metadata GetRandomGame()
     {
         int _index = Random.Range(0, gameData.Length - 1);
 
