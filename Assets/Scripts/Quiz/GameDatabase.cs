@@ -35,6 +35,12 @@ public class GameDatabase : ScriptableObject
         return _index;
     }
 
+    public GameMetadata GetGameData(string _id)
+    {
+        GameMetadata _metaData = gameData[GetIndexFromID(_id)];
+        return _metaData;
+    }
+
     public GameMetadata GetRandomGame()
     {
         int _index = Random.Range(0, gameData.Length - 1);

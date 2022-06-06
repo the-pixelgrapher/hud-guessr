@@ -64,7 +64,7 @@ public class MultiChoiceAnswer : MonoBehaviour
         }
         while (_wrongAnswersTrimmed.Count > answerCount - 1)
         {
-            _wrongAnswersTrimmed.RemoveAt(Random.Range(0, _wrongAnswersTrimmed.Count - 1));
+            _wrongAnswersTrimmed.RemoveAt(Random.Range(0, _wrongAnswersTrimmed.Count));
         }
 
         // Add wrong answer info to list
@@ -82,7 +82,7 @@ public class MultiChoiceAnswer : MonoBehaviour
         var _answerInfoRandom = new List<AnswerCard.AnswerInfo>();
         while (_answerInfoOrdered.Count > 0)
         {
-            int rand = Random.Range(0, _answerInfoOrdered.Count - 1);
+            int rand = Random.Range(0, _answerInfoOrdered.Count);
             _answerInfoRandom.Add(_answerInfoOrdered[rand]);
             _answerInfoOrdered.RemoveAt(rand);
         }
