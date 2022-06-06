@@ -11,6 +11,7 @@ public class QuizManager : MonoBehaviour
     }
 
     public GameMode gameMode;
+    public int numberOfRounds = 5;
 
     [SerializeField]
     private GameDatabase database;
@@ -22,16 +23,50 @@ public class QuizManager : MonoBehaviour
     [SerializeField]
     private MultiChoiceAnswer multiChoiceAnswer;
 
+    private List<GameDatabase.GameMetadata> gameList;
     private GameDatabase.GameMetadata chosenGame;
 
     void Start()
     {
-        //InitRandomGame();
+        gameList = new List<GameDatabase.GameMetadata>();
     }
 
-    public void InitRandomGame()
+    private void GenerateGameList()
     {
-        chosenGame = database.GetRandomGame();
+        // Generate a random list of games of a specified amount
+        gameList = new List<GameDatabase.GameMetadata>();
+        int _amount = numberOfRounds;
+        _amount = Mathf.Clamp(_amount, 1, database.gameData.Length);
+
+        // Add all games to temp collection
+        var _tempList = new List<GameDatabase.GameMetadata>();
+        for (int i = 0; i < database.gameData.Length; i++)
+        {
+            _tempList.Add(database.gameData[i]);
+        }
+
+        // Add random game from temp collection to main list
+        while (gameList.Count < _amount)
+        {
+            int rand = Random.Range(0, _tempList.Count);
+            gameList.Add(_tempList[rand]);
+            _tempList.RemoveAt(rand);
+        }
+    }
+
+    public void InitGame()
+    {
+        // Generate game list if empty
+        if (gameList.Count < 1)
+        {
+            GenerateGameList();
+        }
+        // Select first game from list
+        chosenGame = gameList[0];
+        gameList.RemoveAt(0);
+
+        history.AddEntry(chosenGame);
+
         foreach (HUDGraphic _graphic in hudGraphics)
         {
             _graphic.InitHUDImage(chosenGame);

@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMode: 0
+  numberOfRounds: 5
   database: {fileID: 11400000, guid: cf36e95f206f25f438a9c7b42888f591, type: 2}
   history: {fileID: 147680985}
   hudGraphics:
@@ -290,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b619489645b81b49aef73c29ccaf73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  historyEntry: []
 --- !u!1 &421910170
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +377,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 147680984}
         m_TargetAssemblyTypeName: QuizManager, Assembly-CSharp
-        m_MethodName: InitRandomGame
+        m_MethodName: InitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
