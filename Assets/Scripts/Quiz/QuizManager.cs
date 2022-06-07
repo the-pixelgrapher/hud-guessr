@@ -27,6 +27,7 @@ public class QuizManager : MonoBehaviour
 
     private List<GameDatabase.Metadata> gameList;
     private GameDatabase.Metadata chosenGame;
+    private bool isInit;
     private bool isAnswerSubmitted;
 
     private void Awake()
@@ -64,13 +65,21 @@ public class QuizManager : MonoBehaviour
     public void StartMultiChoiceGame()
     {
         gameMode = GameMode.MultiChoice;
-        InitGame();
+        StartGame();
     }
 
     public void StartTextFieldGame()
     {
         gameMode = GameMode.TextField;
-        InitGame();
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        if (!isInit)
+            InitGame();
+        else
+            SetGameMode(gameMode);
     }
 
     public void EndGame()
@@ -97,6 +106,8 @@ public class QuizManager : MonoBehaviour
 
         InitGameData(chosenGame);
         SetGameMode(gameMode);
+
+        isInit = true;
     }
 
     private void BeginCorrectAnswerSequence()
