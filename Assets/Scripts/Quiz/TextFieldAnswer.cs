@@ -37,7 +37,7 @@ public class TextFieldAnswer : AnswerBase
         // Check if given answer matches any accepted answer
         for (int i = 0; i < _acceptedAnswers.Count; i++)
         {
-            if (givenAnswer == _acceptedAnswers[i])
+            if (_acceptedAnswers[i].Contains(givenAnswer, System.StringComparison.InvariantCultureIgnoreCase))
             {
                 isAnswerCorrect = true;
             }
