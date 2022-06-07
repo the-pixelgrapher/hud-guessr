@@ -6,7 +6,7 @@ using UnityEditor;
 using TMPro;
 
 [System.Serializable]
-public class InputFieldSubmit : UnityEvent { }
+public class InputFieldSubmit : UnityEvent<string> { }
 
 public class GuessSelectableDelagate : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class GuessSelectableDelagate : MonoBehaviour
     {
         selectable.onSubmit.AddListener(val =>
         {
-            OnSubmit.Invoke();
+            OnSubmit.Invoke(val);
         });
     }
 }

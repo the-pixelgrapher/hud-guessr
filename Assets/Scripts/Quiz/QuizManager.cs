@@ -22,6 +22,7 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private TextFieldAnswer textFieldAnswer;
     [SerializeField] Window correctAnswerWindow;
     [SerializeField] Window incorrectAnswerWindow;
+    [SerializeField] Window titleScreen;
     [SerializeField] TMP_Text correctAnswerText;
 
     private List<GameDatabase.Metadata> gameList;
@@ -60,7 +61,26 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    public void InitGame()
+    public void StartMultiChoiceGame()
+    {
+        gameMode = GameMode.MultiChoice;
+        InitGame();
+    }
+
+    public void StartTextFieldGame()
+    {
+        gameMode = GameMode.TextField;
+        InitGame();
+    }
+
+    public void EndGame()
+    {
+        gameMode = GameMode.Unset;
+        SetGameMode(gameMode);
+        titleScreen.OpenWindow();
+    }
+
+    private void InitGame()
     {
         isAnswerSubmitted = false;
 
