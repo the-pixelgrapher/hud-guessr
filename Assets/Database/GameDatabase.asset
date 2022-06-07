@@ -20,7 +20,7 @@ MonoBehaviour:
     - apex
     - apexlegends
     wrongAnswers:
-    - Halo Infinite
+    - Destiny 2
     - Valorant
     - Doom Eternal
     - Overwatch
@@ -59,7 +59,7 @@ MonoBehaviour:
     - 'Dragon Age: Inquisition'
     - 'Dragon Age: Origins'
     - Assassin's Creed Origins
-    - Horizon Zero Dawn
+    - Horizon Forbidden West
   - id: hades
     displayName: Hades
     hudGraphic: {fileID: 21300000, guid: 0b5fe1a754301a242aa94cc5554ccdc8, type: 3}
@@ -76,7 +76,7 @@ MonoBehaviour:
     acceptedAnswers: []
     wrongAnswers:
     - Metroid Prime
-    - Doom (2018)
+    - Doom (2016)
     - Borderlands 2
     - Halo 4
     - Destiny
