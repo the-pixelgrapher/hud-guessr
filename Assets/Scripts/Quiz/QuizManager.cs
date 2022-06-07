@@ -87,7 +87,7 @@ public class QuizManager : MonoBehaviour
         switch (gameMode)
         {
             case GameMode.MultiChoice:
-                if (multiChoiceAnswer.TestAnswer()) { BeginCorrectAnswerSequence(); }
+                if (multiChoiceAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
                 else{ BeginWrongAnswerSequence(); }
                 break;
 

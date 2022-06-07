@@ -1,32 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class MultiChoiceAnswer : MonoBehaviour
+public class MultiChoiceAnswer : AnswerBase
 {
     [Range(1, 6)] public int answerCount = 4;
 
     [SerializeField] private AnswerCard answerCardPrefab;
     [SerializeField] private Transform answerCardContainer;
-    [SerializeField] private Button guessButton;
 
-    private GameDatabase.Metadata chosenGame;
     private string selectedAnswer;
     private List<AnswerCard> answerCards;
     private bool isListInit = false;
 
-    private void Start()
+    protected override void Initialise()
     {
-        guessButton.interactable = false;
-        QuizManager.current.initGameData += InitGameData;
-    }
-
-    public void InitGameData(GameDatabase.Metadata _gameData)
-    {
-        chosenGame = _gameData;
-
-        guessButton.interactable = false;
+        base.Initialise();
         SpawnAnswerCards();
         InitAnswers();
     }
@@ -127,8 +115,9 @@ public class MultiChoiceAnswer : MonoBehaviour
         }
     }
 
-    public bool TestAnswer()
+    protected override void TestAnswerCorrect()
     {
-        return selectedAnswer == chosenGame.id;
+        base.TestAnswerCorrect();
+        isAnswerCorrect = selectedAnswer == chosenGame.id;
     }
 }
