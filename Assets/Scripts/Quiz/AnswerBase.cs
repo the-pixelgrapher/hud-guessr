@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public abstract class AnswerBase : MonoBehaviour
 {
+    [SerializeField] protected QuizManager.GameMode gameMode;
+
     [SerializeField] protected Button guessButton;
 
     protected GameDatabase.Metadata chosenGame;
@@ -11,7 +13,13 @@ public abstract class AnswerBase : MonoBehaviour
     private void Start()
     {
         guessButton.interactable = false;
-        QuizManager.current.initGameData += InitGameData;
+        QuizManager.current.InitGameData += InitGameData;
+        QuizManager.current.SetGameMode += ApplyGameMode;
+    }
+
+    protected void ApplyGameMode(QuizManager.GameMode _mode)
+    {
+        gameObject.SetActive(_mode == gameMode);
     }
 
     private void InitGameData(GameDatabase.Metadata _gameData)
@@ -27,6 +35,7 @@ public abstract class AnswerBase : MonoBehaviour
 
     protected virtual void TestAnswerCorrect()
     {
+        isAnswerCorrect = false;
     }
 
     public bool GetAnswerCorrect()

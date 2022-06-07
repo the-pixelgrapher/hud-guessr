@@ -6,6 +6,7 @@ public class QuizManager : MonoBehaviour
 {
     public enum GameMode
     {
+        Unset,
         MultiChoice,
         TextField
     }
@@ -18,6 +19,7 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private GameHistory history;
 
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
+    [SerializeField] private TextFieldAnswer textFieldAnswer;
     [SerializeField] Window correctAnswerWindow;
     [SerializeField] Window incorrectAnswerWindow;
     [SerializeField] TMP_Text correctAnswerText;
@@ -31,7 +33,8 @@ public class QuizManager : MonoBehaviour
         gameList = new List<GameDatabase.Metadata>();
     }
 
-    public event System.Action<GameDatabase.Metadata> initGameData;
+    public event System.Action<GameDatabase.Metadata> InitGameData;
+    public event System.Action<GameMode> SetGameMode;
 
     private void GenerateGameList()
     {
@@ -69,7 +72,8 @@ public class QuizManager : MonoBehaviour
 
         history.AddEntry(chosenGame);
 
-        initGameData(chosenGame);
+        InitGameData(chosenGame);
+        SetGameMode(gameMode);
     }
 
     private void BeginCorrectAnswerSequence()
@@ -92,6 +96,8 @@ public class QuizManager : MonoBehaviour
                 break;
 
             case GameMode.TextField:
+                if (textFieldAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
+                else { BeginWrongAnswerSequence(); }
                 break;
         }
     }

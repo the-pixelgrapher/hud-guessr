@@ -7,7 +7,7 @@ public class HUDGraphic : MonoBehaviour
 
     private void Start()
     {
-        QuizManager.current.initGameData += InitHUDImage;
+        QuizManager.current.InitGameData += InitHUDImage;
     }
 
     public void InitHUDImage(GameDatabase.Metadata _gameData)

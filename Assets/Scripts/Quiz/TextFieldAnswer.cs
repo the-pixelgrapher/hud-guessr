@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -9,6 +10,7 @@ public class TextFieldAnswer : AnswerBase
     protected override void Initialise()
     {
         base.Initialise();
+        answerField.text = "";
     }
 
 
@@ -21,5 +23,24 @@ public class TextFieldAnswer : AnswerBase
     protected override void TestAnswerCorrect()
     {
         base.TestAnswerCorrect();
+
+        // Add all accepted answers to list
+        var _acceptedAnswers = new List<string>();
+
+        _acceptedAnswers.Add(chosenGame.displayName);
+
+        for (int i = 0; i < chosenGame.acceptedAnswers.Length; i++)
+        {
+            _acceptedAnswers.Add(chosenGame.acceptedAnswers[i]);
+        }
+
+        // Check if given answer matches any accepted answer
+        for (int i = 0; i < _acceptedAnswers.Count; i++)
+        {
+            if (givenAnswer == _acceptedAnswers[i])
+            {
+                isAnswerCorrect = true;
+            }
+        }
     }
 }
