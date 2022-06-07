@@ -26,6 +26,7 @@ public class MultiChoiceAnswer : MonoBehaviour
     {
         chosenGame = _gameData;
 
+        guessButton.interactable = false;
         SpawnAnswerCards();
         InitAnswers();
     }
