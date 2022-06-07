@@ -8,7 +8,7 @@ public class MultiChoiceAnswer : AnswerBase
     [SerializeField] private AnswerCard answerCardPrefab;
     [SerializeField] private Transform answerCardContainer;
 
-    private string selectedAnswer;
+    private string selectedAnswer = "";
     private List<AnswerCard> answerCards;
     private bool isListInit = false;
 
@@ -118,6 +118,6 @@ public class MultiChoiceAnswer : AnswerBase
     protected override void TestAnswerCorrect()
     {
         base.TestAnswerCorrect();
-        isAnswerCorrect = selectedAnswer == chosenGame.id;
+        isAnswerCorrect = (selectedAnswer.Length > 0) && (selectedAnswer == chosenGame.id);
     }
 }
