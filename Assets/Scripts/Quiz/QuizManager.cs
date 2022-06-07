@@ -26,6 +26,7 @@ public class QuizManager : MonoBehaviour
 
     private List<GameDatabase.Metadata> gameList;
     private GameDatabase.Metadata chosenGame;
+    private bool isAnswerSubmitted;
 
     private void Awake()
     {
@@ -61,6 +62,8 @@ public class QuizManager : MonoBehaviour
 
     public void InitGame()
     {
+        isAnswerSubmitted = false;
+
         // Generate game list if empty
         if (gameList.Count < 1)
         {
@@ -79,15 +82,20 @@ public class QuizManager : MonoBehaviour
     private void BeginCorrectAnswerSequence()
     {
         correctAnswerWindow.OpenWindow();
+        isAnswerSubmitted = true;
     }
     private void BeginWrongAnswerSequence()
     {
         incorrectAnswerWindow.OpenWindow();
         correctAnswerText.text = "The game was: " + chosenGame.displayName;
+        isAnswerSubmitted = true;
     }
 
     public void Guess()
     {
+        if (isAnswerSubmitted)
+            return;
+
         switch (gameMode)
         {
             case GameMode.MultiChoice:
