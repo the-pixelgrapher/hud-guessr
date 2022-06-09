@@ -29,4 +29,10 @@ public class OnEnableTween : MonoBehaviour
         m_canvas.alpha = 1.0f - m_tweenSettings.FadeEndAlpha;
         transform.localScale = m_tweenSettings.ScaleStart;
     }
+
+    private void OnDestroy()
+    {
+        m_fadeTween?.Kill(true);
+        m_scaleTween?.Kill(true);
+    }
 }

@@ -5,6 +5,7 @@ public partial class Window : MonoBehaviour
 {
     public string windowID;
 
+    [SerializeField] private bool startShown = false;
     [SerializeField] private CanvasGroup blanketCanvas = null;
     [SerializeField] private CanvasGroup windowCanvas = null;
 
@@ -24,6 +25,13 @@ public partial class Window : MonoBehaviour
     {
         WindowManager.current.SetWindow += OnShowWindow;
         WindowManager.current.UnsetWindow += OnHideWindow;
+
+        isShowing = startShown;
+        blanketCanvas.gameObject.SetActive(isShowing);
+        blanketCanvas.alpha = isShowing ? 1.0f : 0.0f;
+        windowCanvas.transform.localScale = Vector3.one;
+        windowCanvas.gameObject.SetActive(isShowing);
+        windowCanvas.alpha = isShowing ? 1.0f : 0.0f;
     }
 
     public void OpenWindow()

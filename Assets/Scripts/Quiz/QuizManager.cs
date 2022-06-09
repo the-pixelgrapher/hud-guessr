@@ -67,20 +67,17 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    public void StartMultiChoiceGame()
+    public void StartGameMode(GameMode _mode)
     {
-        gameMode = GameMode.MultiChoice;
-        StartGame();
-    }
-
-    public void StartTextFieldGame()
-    {
-        gameMode = GameMode.TextField;
+        gameMode = _mode;
         StartGame();
     }
 
     public void StartGame()
     {
+        WindowManager.current.HideWindow("TitleScreen");
+        WindowManager.current.HideWindow("GameSettingsWindow");
+
         if (!isInit)
             InitGame();
         else
