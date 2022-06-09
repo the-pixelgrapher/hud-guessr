@@ -43,4 +43,10 @@ public abstract class AnswerBase : MonoBehaviour
         TestAnswerCorrect();
         return isAnswerCorrect;
     }
+
+    private void OnDestroy()
+    {
+        QuizManager.current.InitGameData -= InitGameData;
+        QuizManager.current.SetGameMode -= ApplyGameMode;
+    }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,6 +13,8 @@ public class QuizManager : MonoBehaviour
     }
 
     public GameMode gameMode;
+    public event System.Action<GameDatabase.Metadata> InitGameData;
+    public event System.Action<GameMode> SetGameMode;
     public int numberOfRounds = 5;
     public static QuizManager current;
 
@@ -34,10 +37,14 @@ public class QuizManager : MonoBehaviour
     {
         current = this;
         gameList = new List<GameDatabase.Metadata>();
+        StartCoroutine(InitGameMode());
     }
 
-    public event System.Action<GameDatabase.Metadata> InitGameData;
-    public event System.Action<GameMode> SetGameMode;
+    IEnumerator InitGameMode()
+    {
+        yield return null;
+        SetGameMode(gameMode);
+    }
 
     private void GenerateGameList()
     {
