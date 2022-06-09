@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using System.ComponentModel;
 
@@ -10,9 +8,8 @@ public class StringFormatter
         var nm = e.ToString();
         var tp = e.GetType();
         var field = tp.GetField(nm);
-        var attrib = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
 
-        if (attrib != null)
+        if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attrib)
             return attrib.Description;
         else
             return nm;
