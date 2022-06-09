@@ -13,7 +13,6 @@ public class TextFieldAnswer : AnswerBase
         answerField.text = "";
     }
 
-
     public void GetInputFromAnswerField()
     {
         givenAnswer = answerField.text;

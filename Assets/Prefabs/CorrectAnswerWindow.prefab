@@ -195,13 +195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0932200875df2344bb8b5ac8f51661f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_blanket: {fileID: 269803481776612258}
-  m_window: {fileID: 269803481803121502}
-  m_blanketFadeTime: 0.25
-  m_windowFadeTime: 0.175
-  m_windowScaleTime: 0.35
-  m_windowStartScale: {x: 1.5, y: 1.5, z: 1}
-  m_windowScaleEase: 27
+  windowID: CorrectAnswerWindow
+  blanketCanvas: {fileID: 269803481776612258}
+  windowCanvas: {fileID: 269803481803121502}
+  blanketFadeTime: 0.25
+  windowFadeTime: 0.175
+  windowScaleTime: 0.35
+  windowStartScale: {x: 1.5, y: 1.5, z: 1}
+  windowScaleEase: 27
 --- !u!1 &269803481776612269
 GameObject:
   m_ObjectHideFlags: 0

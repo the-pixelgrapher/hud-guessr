@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
-using UnityEngine.UI;
-using UnityEditor;
 using TMPro;
 
 [System.Serializable]

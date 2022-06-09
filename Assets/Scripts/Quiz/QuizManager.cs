@@ -23,8 +23,6 @@ public class QuizManager : MonoBehaviour
 
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
     [SerializeField] private TextFieldAnswer textFieldAnswer;
-    [SerializeField] Window correctAnswerWindow;
-    [SerializeField] Window incorrectAnswerWindow;
     [SerializeField] Window titleScreen;
     [SerializeField] TMP_Text correctAnswerText;
 
@@ -119,12 +117,12 @@ public class QuizManager : MonoBehaviour
 
     private void BeginCorrectAnswerSequence()
     {
-        correctAnswerWindow.OpenWindow();
+        WindowManager.current.ShowWindow("CorrectAnswerWindow");
         isAnswerSubmitted = true;
     }
     private void BeginWrongAnswerSequence()
     {
-        incorrectAnswerWindow.OpenWindow();
+        WindowManager.current.ShowWindow("IncorrectAnswerWindow");
         correctAnswerText.text = "The game was: " + chosenGame.displayName;
         isAnswerSubmitted = true;
     }
