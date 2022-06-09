@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.ComponentModel;
 using TMPro;
 
 
@@ -26,7 +27,7 @@ public class GameSettingsMenu : MonoBehaviour
         for (int i = 1; i < _gameModeCount; i++)
         {
             QuizManager.GameMode _mode = (QuizManager.GameMode)i;
-            _dropdownOptions.Add(UnityEditor.ObjectNames.NicifyVariableName(_mode.ToString()));
+            _dropdownOptions.Add(StringFormatter.FormatEnum(_mode));
         }
         gameModeDropdown.AddOptions(_dropdownOptions);
     }

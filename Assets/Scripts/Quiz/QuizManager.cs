@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using TMPro;
 
@@ -8,8 +9,8 @@ public class QuizManager : MonoBehaviour
     public enum GameMode
     {
         Unset,
-        MultiChoice,
-        TextField
+        [Description("Multi Choice")] MultiChoice,
+        [Description("Text Field")] TextField
     }
 
     public GameMode gameMode;
