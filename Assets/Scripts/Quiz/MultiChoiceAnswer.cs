@@ -87,7 +87,7 @@ public class MultiChoiceAnswer : AnswerBase
             if (i < _answerInfoRandom.Count)
             {
                 answerCards[i].gameObject.SetActive(true);
-                answerCards[i].Initialize(_answerInfoRandom[i].id, _answerInfoRandom[i].displayName, this);
+                answerCards[i].Initialize(_answerInfoRandom[i], this);
             }
             else
             {

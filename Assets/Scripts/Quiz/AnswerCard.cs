@@ -16,10 +16,9 @@ public class AnswerCard : MonoBehaviour
 
     private MultiChoiceAnswer manager;
 
-    public void Initialize(string _id, string _displayName, MultiChoiceAnswer _manager)
+    public void Initialize(AnswerInfo _info, MultiChoiceAnswer _manager)
     {
-        answerInfo.id = _id;
-        answerInfo.displayName = _displayName;
+        answerInfo = _info;
         manager = _manager;
 
         marker.SetActive(false);
