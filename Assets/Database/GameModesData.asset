@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93854976682fc445a9a51e6afea0df8, type: 3}
+  m_Name: GameModesData
+  m_EditorClassIdentifier: 
+  modeData:
+  - displayName: Unset
+    description: No game mode
+    gameMode: 0
+    icon: {fileID: 0}
+  - displayName: Multi Choice
+    description: Select the correct game from a list
+    gameMode: 1
+    icon: {fileID: 21300000, guid: adc2d1fd6d60eb640a1e1a4d07c74a46, type: 3}
+  - displayName: Text Field
+    description: Type in the name of the game. Remember to be specific for sequels!
+    gameMode: 2
+    icon: {fileID: 21300000, guid: 20e1ba5c4b74fbc4695590de68ee8060, type: 3}

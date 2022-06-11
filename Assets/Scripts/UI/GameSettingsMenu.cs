@@ -1,13 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.ComponentModel;
-using TMPro;
-
 
 public class GameSettingsMenu : MonoBehaviour
 {
-    [SerializeField] private TMP_Dropdown gameModeDropdown;
+    [SerializeField] private GameModePicker modePicker;
     [SerializeField] private Slider roundCountSlider;
     [SerializeField] private Slider timeLimitSlider;
 
@@ -18,28 +14,11 @@ public class GameSettingsMenu : MonoBehaviour
 
     private void InitializeSettingsUI()
     {
-        // Add game modes to dropdown
-        gameModeDropdown.ClearOptions();
-
-        int _gameModeCount = System.Enum.GetValues(typeof(QuizManager.GameMode)).Length;
-        List<string> _dropdownOptions = new List<string>();
-
-        for (int i = 1; i < _gameModeCount; i++)
-        {
-            QuizManager.GameMode _mode = (QuizManager.GameMode)i;
-            _dropdownOptions.Add(StringFormatter.FormatEnum(_mode));
-        }
-        gameModeDropdown.AddOptions(_dropdownOptions);
+        modePicker.Initialize();
     }
 
     public void StartGameWithCurrentSettings()
     {
-        QuizManager.current.StartGameMode((QuizManager.GameMode)gameModeDropdown.value + 1);
-    }
-
-
-    void Update()
-    {
-        
+        QuizManager.current.StartGameMode(modePicker.GetSelectedMode());
     }
 }
