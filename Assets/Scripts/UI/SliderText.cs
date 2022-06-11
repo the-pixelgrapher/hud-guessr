@@ -8,6 +8,8 @@ public class SliderText : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
     [SerializeField] private Slider slider;
+    [SerializeField] private string minText;
+    [SerializeField] private string maxText;
 
     private void Awake()
     {
@@ -22,5 +24,14 @@ public class SliderText : MonoBehaviour
     public void SetText()
     {
         text.text = slider.value.ToString("N0");
+
+        if (Mathf.Approximately(slider.value, slider.maxValue) && maxText != "")
+        {
+            text.text = maxText;
+        }
+        if (Mathf.Approximately(slider.value, slider.minValue) && minText != "")
+        {
+            text.text = minText;
+        }
     }
 }

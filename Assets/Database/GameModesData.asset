@@ -25,3 +25,4 @@ MonoBehaviour:
     description: Type in the name of the game. Remember to be specific for sequels!
     gameMode: 2
     icon: {fileID: 21300000, guid: 20e1ba5c4b74fbc4695590de68ee8060, type: 3}
+  maxTimeLimit: 30

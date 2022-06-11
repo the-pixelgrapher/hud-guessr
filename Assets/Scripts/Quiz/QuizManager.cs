@@ -29,17 +29,19 @@ public class QuizManager : MonoBehaviour
     public Settings settings;
 
     [SerializeField] private GameDatabase database;
+    [SerializeField] private GameModeData modeData;
     [SerializeField] private GameHistory history;
 
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
     [SerializeField] private TextFieldAnswer textFieldAnswer;
-    [SerializeField] Window titleScreen;
+    [SerializeField] private TimerWidget timer;
     [SerializeField] TMP_Text correctAnswerText;
 
     private List<GameDatabase.Metadata> gameList;
     private GameDatabase.Metadata chosenGame;
     private bool isInit;
     private bool isAnswerSubmitted;
+    public bool isPlaying;
 
     private void Awake()
     {
@@ -65,6 +67,13 @@ public class QuizManager : MonoBehaviour
             InitGame();
         else
             SetGameMode(settings.gameMode);
+
+        isPlaying = true;
+    }
+
+    public bool GetIsPlaying()
+    {
+        return isPlaying;
     }
 
     public void Guess()
@@ -84,13 +93,16 @@ public class QuizManager : MonoBehaviour
                 else { BeginWrongAnswerSequence(); }
                 break;
         }
+
+        timer.PauseTimer();
     }
 
     public void EndGame()
     {
         settings.gameMode = GameMode.Unset;
         SetGameMode(settings.gameMode);
-        titleScreen.OpenWindow();
+        WindowManager.current.ShowWindow("TitleScreen");
+        isPlaying = false;
     }
 
     private void GenerateGameList()
@@ -128,24 +140,37 @@ public class QuizManager : MonoBehaviour
         // Select first game from list
         chosenGame = gameList[0];
         gameList.RemoveAt(0);
-
         history.AddEntry(chosenGame);
 
+        // Send game data events
         InitGameData(chosenGame);
         SetGameMode(settings.gameMode);
 
+        // Set timer widget
+        if ((settings.timeLimit - Mathf.Epsilon) < modeData.maxTimeLimit)
+        {
+            timer.SetTimer(settings.timeLimit);
+        }
+        else
+        {
+            timer.StopTimer();
+        }
+
         isInit = true;
+        isPlaying = true;
     }
 
     private void BeginCorrectAnswerSequence()
     {
         WindowManager.current.ShowWindow("CorrectAnswerWindow");
         isAnswerSubmitted = true;
+        isPlaying = false;
     }
     private void BeginWrongAnswerSequence()
     {
         WindowManager.current.ShowWindow("IncorrectAnswerWindow");
         correctAnswerText.text = "The game was: " + chosenGame.displayName;
         isAnswerSubmitted = true;
+        isPlaying = false;
     }
 }

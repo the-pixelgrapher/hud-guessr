@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8d03dc4c00e5346a2adfa614236616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modeData: {fileID: 11400000, guid: e3bc23c3df6e4434491524f27ae5b92e, type: 2}
   modePicker: {fileID: 4200091524680306679}
   answerCountParent: {fileID: 2654361216133149159}
   answerCountSlider: {fileID: 7540236216817481668}
@@ -991,6 +992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time Limit
       objectReference: {fileID: 0}
+    - target: {fileID: 3948143448572473469, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
+      propertyPath: maxText
+      value: "\u221E"
+      objectReference: {fileID: 0}
     - target: {fileID: 4609091890023910018, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1037,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249920204275984820, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.44444445
+      value: 0.42857143
       objectReference: {fileID: 0}
     - target: {fileID: 5249920204275984820, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1045,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249920204275984820, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.44444445
+      value: 0.42857143
       objectReference: {fileID: 0}
     - target: {fileID: 5249920204275984820, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1061,7 +1066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9046361944060197314, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
       propertyPath: m_MaxValue
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 9046361944060197314, guid: f96f4db7362bb4548bc02e09fdac9c70, type: 3}
       propertyPath: m_MinValue

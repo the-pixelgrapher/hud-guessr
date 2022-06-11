@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class GameSettingsMenu : MonoBehaviour
 {
+    [SerializeField] private GameModeData modeData;
     [SerializeField] private GameModePicker modePicker;
     [SerializeField] private GameObject answerCountParent;
     [SerializeField] private Slider answerCountSlider;
@@ -40,5 +41,6 @@ public class GameSettingsMenu : MonoBehaviour
         answerCountSlider.value = QuizManager.current.settings.multiAnswerCount;
         roundCountSlider.value = QuizManager.current.settings.numberOfRounds;
         timeLimitSlider.value = QuizManager.current.settings.timeLimit;
+        timeLimitSlider.maxValue = modeData.maxTimeLimit + 1;
     }
 }

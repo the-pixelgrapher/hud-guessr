@@ -15,4 +15,6 @@ public class GameModeData : ScriptableObject
     }
 
     public Mode[] modeData;
+
+    public int maxTimeLimit;
 }
