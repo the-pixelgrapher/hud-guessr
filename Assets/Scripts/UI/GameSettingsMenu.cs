@@ -37,7 +37,7 @@ public class GameSettingsMenu : MonoBehaviour
     private void InitializeSettingsUI()
     {
         modePicker.Initialize();
-        answerCountSlider.value = QuizManager.current.settings.numberOfRounds;
+        answerCountSlider.value = QuizManager.current.settings.multiAnswerCount;
         roundCountSlider.value = QuizManager.current.settings.numberOfRounds;
         timeLimitSlider.value = QuizManager.current.settings.timeLimit;
     }
