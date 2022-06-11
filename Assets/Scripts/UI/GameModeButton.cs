@@ -7,7 +7,6 @@ using TMPro;
 public class GameModeButton : MonoBehaviour
 {
     public GameModeData.Mode modeData;
-
     public bool startSelected;
 
     [SerializeField] private TMP_Text buttonText;

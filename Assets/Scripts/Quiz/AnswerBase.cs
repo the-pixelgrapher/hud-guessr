@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public abstract class AnswerBase : MonoBehaviour
 {
     [SerializeField] protected QuizManager.GameMode gameMode;
-
     [SerializeField] protected Button guessButton;
 
     protected GameDatabase.Metadata chosenGame;
     protected bool isAnswerCorrect;
+
     public bool GetAnswerCorrect()
     {
         TestAnswerCorrect();
@@ -42,7 +42,6 @@ public abstract class AnswerBase : MonoBehaviour
         guessButton.interactable = false;
         Initialise();
     }
-
 
     private void OnDestroy()
     {

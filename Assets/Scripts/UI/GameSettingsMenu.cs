@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class GameSettingsMenu : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class GameSettingsMenu : MonoBehaviour
     {
         InitializeSettingsUI();
     }
+
     public void ApplyGameSettings()
     {
         QuizManager.current.settings.gameMode = modePicker.GetSelectedMode();

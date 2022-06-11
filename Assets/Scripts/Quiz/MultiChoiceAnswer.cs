@@ -36,6 +36,24 @@ public class MultiChoiceAnswer : AnswerBase
         }
     }
 
+    public void SelectAnswer(string _id)
+    {
+        guessButton.interactable = true;
+
+        selectedAnswer = _id;
+        for (int i = 0; i < answerCards.Count; i++)
+        {
+            if (answerCards[i].answerInfo.id == selectedAnswer)
+            {
+                answerCards[i].Select();
+            }
+            else
+            {
+                answerCards[i].Deselect();
+            }
+        }
+    }
+
     private void InitAnswers()
     {
         // Set up temporary list of answer info to randomise later
@@ -93,24 +111,6 @@ public class MultiChoiceAnswer : AnswerBase
             {
                 // If there are more cards than available answers, disable card
                 answerCards[i].gameObject.SetActive(false);
-            }
-        }
-    }
-
-    public void SelectAnswer(string _id)
-    {
-        guessButton.interactable = true;
-
-        selectedAnswer = _id;
-        for (int i = 0; i < answerCards.Count; i++)
-        {
-            if (answerCards[i].answerInfo.id == selectedAnswer)
-            {
-                answerCards[i].Select();
-            }
-            else
-            {
-                answerCards[i].Deselect();
             }
         }
     }
