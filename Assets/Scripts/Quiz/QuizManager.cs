@@ -1,46 +1,115 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using TMPro;
 
 public class QuizManager : MonoBehaviour
 {
+    public event System.Action<GameDatabase.Metadata> InitGameData;
+    public event System.Action<GameMode> SetGameMode;
+    public static QuizManager current;
+
     public enum GameMode
     {
         Unset,
-        MultiChoice,
-        TextField
+        [Description("Multi Choice")] MultiChoice,
+        [Description("Text Field")] TextField
     }
 
-    public GameMode gameMode;
-    public int numberOfRounds = 5;
-    public static QuizManager current;
+    [System.Serializable]
+    public struct Settings
+    {
+        public GameMode gameMode;
+        public int multiAnswerCount;
+        public int numberOfRounds;
+        public float timeLimit;
+    }
+
+    public Settings settings;
 
     [SerializeField] private GameDatabase database;
+    [SerializeField] private GameModeData modeData;
     [SerializeField] private GameHistory history;
 
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
     [SerializeField] private TextFieldAnswer textFieldAnswer;
-    [SerializeField] Window correctAnswerWindow;
-    [SerializeField] Window incorrectAnswerWindow;
+    [SerializeField] private TimerWidget timer;
     [SerializeField] TMP_Text correctAnswerText;
 
     private List<GameDatabase.Metadata> gameList;
     private GameDatabase.Metadata chosenGame;
+    private bool isInit;
+    private bool isAnswerSubmitted;
+    public bool isPlaying;
 
     private void Awake()
     {
         current = this;
         gameList = new List<GameDatabase.Metadata>();
+        StartCoroutine(UnsetGameMode());
     }
 
-    public event System.Action<GameDatabase.Metadata> InitGameData;
-    public event System.Action<GameMode> SetGameMode;
+    IEnumerator UnsetGameMode()
+    {
+        yield return null;
+        SetGameMode(GameMode.Unset);
+    }
+
+    public void StartGame()
+    {
+        WindowManager.current.HideWindow("TitleScreen");
+        WindowManager.current.HideWindow("GameSettingsWindow");
+
+        multiChoiceAnswer.answerCount = settings.multiAnswerCount;
+
+        if (!isInit)
+            InitGame();
+        else
+            SetGameMode(settings.gameMode);
+
+        isPlaying = true;
+    }
+
+    public bool GetIsPlaying()
+    {
+        return isPlaying;
+    }
+
+    public void Guess()
+    {
+        if (isAnswerSubmitted)
+            return;
+
+        switch (settings.gameMode)
+        {
+            case GameMode.MultiChoice:
+                if (multiChoiceAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
+                else { BeginWrongAnswerSequence(); }
+                break;
+
+            case GameMode.TextField:
+                if (textFieldAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
+                else { BeginWrongAnswerSequence(); }
+                break;
+        }
+
+        timer.PauseTimer();
+    }
+
+    public void EndGame()
+    {
+        settings.gameMode = GameMode.Unset;
+        SetGameMode(settings.gameMode);
+        WindowManager.current.ShowWindow("TitleScreen");
+        isPlaying = false;
+    }
 
     private void GenerateGameList()
     {
         // Generate a random list of games of a specified amount
         gameList = new List<GameDatabase.Metadata>();
-        int _amount = numberOfRounds;
+        int _amount = settings.numberOfRounds;
         _amount = Mathf.Clamp(_amount, 1, database.gameData.Length);
 
         // Add all games to temp collection
@@ -59,8 +128,10 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    public void InitGame()
+    private void InitGame()
     {
+        isAnswerSubmitted = false;
+
         // Generate game list if empty
         if (gameList.Count < 1)
         {
@@ -69,36 +140,37 @@ public class QuizManager : MonoBehaviour
         // Select first game from list
         chosenGame = gameList[0];
         gameList.RemoveAt(0);
-
         history.AddEntry(chosenGame);
 
+        // Send game data events
         InitGameData(chosenGame);
-        SetGameMode(gameMode);
+        SetGameMode(settings.gameMode);
+
+        // Set timer widget
+        if ((settings.timeLimit - Mathf.Epsilon) < modeData.maxTimeLimit)
+        {
+            timer.SetTimer(settings.timeLimit);
+        }
+        else
+        {
+            timer.StopTimer();
+        }
+
+        isInit = true;
+        isPlaying = true;
     }
 
     private void BeginCorrectAnswerSequence()
     {
-        correctAnswerWindow.OpenWindow();
+        WindowManager.current.ShowWindow("CorrectAnswerWindow");
+        isAnswerSubmitted = true;
+        isPlaying = false;
     }
     private void BeginWrongAnswerSequence()
     {
-        incorrectAnswerWindow.OpenWindow();
+        WindowManager.current.ShowWindow("IncorrectAnswerWindow");
         correctAnswerText.text = "The game was: " + chosenGame.displayName;
-    }
-
-    public void Guess()
-    {
-        switch (gameMode)
-        {
-            case GameMode.MultiChoice:
-                if (multiChoiceAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
-                else{ BeginWrongAnswerSequence(); }
-                break;
-
-            case GameMode.TextField:
-                if (textFieldAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
-                else { BeginWrongAnswerSequence(); }
-                break;
-        }
+        isAnswerSubmitted = true;
+        isPlaying = false;
     }
 }

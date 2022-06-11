@@ -1,75 +1,89 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UI;
 
-public class Window : MonoBehaviour
+public partial class Window : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup m_blanket = null;
-    [SerializeField] private CanvasGroup m_window = null;
+    public string windowID;
 
-    [SerializeField] private float m_blanketFadeTime = 0.25f;
-    [SerializeField] private float m_windowFadeTime = 0.175f;
-    [SerializeField] private float m_windowScaleTime = 0.35f;
-    [SerializeField] private Vector3 m_windowStartScale = Vector3.one;
-    [SerializeField] private Ease m_windowScaleEase = Ease.OutBack;
+    [SerializeField] private bool startShown = false;
+    [SerializeField] private CanvasGroup blanketCanvas = null;
+    [SerializeField] private CanvasGroup windowCanvas = null;
 
-    private Tween m_blanketTween = null;
-    private Tween m_windowFadeTween = null;
-    private Tween m_windowScaleTween = null;
+    [SerializeField] private float blanketFadeTime = 0.25f;
+    [SerializeField] private float windowFadeTime = 0.175f;
+    [SerializeField] private float windowScaleTime = 0.35f;
+    [SerializeField] private Vector3 windowStartScale = Vector3.one;
+    [SerializeField] private Ease windowScaleEase = Ease.OutBack;
 
-    private bool m_isShowing = false;
+    private Tween blanketTween = null;
+    private Tween windowFadeTween = null;
+    private Tween windowScaleTween = null;
+
+    private bool isShowing = false;
+
+    private void Start()
+    {
+        WindowManager.current.SetWindow += OnShowWindow;
+        WindowManager.current.UnsetWindow += OnHideWindow;
+
+        isShowing = startShown;
+        blanketCanvas.gameObject.SetActive(isShowing);
+        blanketCanvas.alpha = isShowing ? 1.0f : 0.0f;
+        windowCanvas.transform.localScale = Vector3.one;
+        windowCanvas.gameObject.SetActive(isShowing);
+        windowCanvas.alpha = isShowing ? 1.0f : 0.0f;
+    }
 
     public void OpenWindow()
     {
         KillAllTweens();
 
-        if (m_blanket != null)
+        if (blanketCanvas != null)
         {
-            m_blanket.gameObject.SetActive(true);
-            m_blanketTween = m_blanket.DOFade(1.0f, m_blanketFadeTime);
+            blanketCanvas.gameObject.SetActive(true);
+            blanketTween = blanketCanvas.DOFade(1.0f, blanketFadeTime);
         }
 
-        if (m_window != null)
+        if (windowCanvas != null)
         {
-            m_window.gameObject.SetActive(true);
-            m_windowFadeTween = m_window.DOFade(1.0f, m_windowFadeTime);
-            m_window.transform.localScale = m_windowStartScale;
-            m_windowScaleTween = m_window.transform.DOScale(Vector3.one, m_windowScaleTime).SetEase(m_windowScaleEase);
+            windowCanvas.gameObject.SetActive(true);
+            windowFadeTween = windowCanvas.DOFade(1.0f, windowFadeTime);
+            windowCanvas.transform.localScale = windowStartScale;
+            windowScaleTween = windowCanvas.transform.DOScale(Vector3.one, windowScaleTime).SetEase(windowScaleEase);
+
         }
 
-        m_isShowing = true;
+        isShowing = true;
     }
 
     public void CloseWindow()
     {
         KillAllTweens();
 
-        if (m_blanket != null)
+        if (blanketCanvas != null)
         {
-            m_blanketTween = m_blanket.DOFade(0.0f, m_blanketFadeTime)
+            blanketTween = blanketCanvas.DOFade(0.0f, blanketFadeTime)
                 .OnComplete(() => 
-                    m_blanket.gameObject.SetActive(false)
+                    blanketCanvas.gameObject.SetActive(false)
                 );
         }
 
-        if (m_window != null)
+        if (windowCanvas != null)
         {
-            m_windowFadeTween = m_window.DOFade(0.0f, m_windowFadeTime)
+            windowFadeTween = windowCanvas.DOFade(0.0f, windowFadeTime)
                 .OnComplete(() => 
-                    m_window.gameObject.SetActive(false)
+                    windowCanvas.gameObject.SetActive(false)
                 );
 
-            m_windowScaleTween = m_window.transform.DOScale(m_windowStartScale, m_windowScaleTime);
+            windowScaleTween = windowCanvas.transform.DOScale(windowStartScale, windowScaleTime);
         }
 
-        m_isShowing = false;
+        isShowing = false;
     }
 
     public void ToggleWindow()
     {
-        if (m_isShowing)
+        if (isShowing)
         {
             CloseWindow();
         }
@@ -79,15 +93,58 @@ public class Window : MonoBehaviour
         }
     }
 
+    public void SetWindowInteraction(bool _interactable)
+    {
+        if (windowCanvas != null)
+        {
+            windowCanvas.interactable = _interactable;
+        }
+    }
+
+    private void OnShowWindow(string _targetWindow)
+    {
+        if (_targetWindow == windowID && !isShowing)
+        {
+            OpenWindow();
+        }
+    }
+
+    private void OnHideWindow(string _targetWindow)
+    {
+        if (_targetWindow == windowID && isShowing)
+        {
+            CloseWindow();
+        }
+    }
+
     private void KillAllTweens()
     {
-        m_blanketTween?.Kill(true);
+        blanketTween?.Kill(true);
         KillWindowTweens();
     }
 
     private void KillWindowTweens()
     {
-        m_windowFadeTween?.Kill(true);
-        m_windowScaleTween?.Kill(true);
+        windowFadeTween?.Kill(true);
+        windowScaleTween?.Kill(true);
     }
+
+    private void OnDestroy()
+    {
+        WindowManager.current.SetWindow -= OnShowWindow;
+        WindowManager.current.UnsetWindow -= OnShowWindow;
+    }
+}
+
+public partial class Window
+{
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (windowID == "")
+        {
+            windowID = gameObject.name;
+        }
+    }
+#endif
 }
