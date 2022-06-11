@@ -25,9 +25,10 @@ public class GameModePicker : MonoBehaviour
             _modeButtom.transform.SetParent(buttonParent);
             _modeButtom.transform.localScale = Vector3.one;
             _modeButtom.Initialize(gameModeData.modeData[i], this);
-
             modeButtons.Add(_modeButtom);
         }
+
+        SelectGameMode(defaultMode);
     }
 
     public QuizManager.GameMode GetSelectedMode()

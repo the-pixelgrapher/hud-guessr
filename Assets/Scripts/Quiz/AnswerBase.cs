@@ -9,6 +9,11 @@ public abstract class AnswerBase : MonoBehaviour
 
     protected GameDatabase.Metadata chosenGame;
     protected bool isAnswerCorrect;
+    public bool GetAnswerCorrect()
+    {
+        TestAnswerCorrect();
+        return isAnswerCorrect;
+    }
 
     private void Start()
     {
@@ -22,13 +27,6 @@ public abstract class AnswerBase : MonoBehaviour
         gameObject.SetActive(_mode == gameMode);
     }
 
-    private void InitGameData(GameDatabase.Metadata _gameData)
-    {
-        chosenGame = _gameData;
-        guessButton.interactable = false;
-        Initialise();
-    }
-
     protected virtual void Initialise()
     {
     }
@@ -38,11 +36,13 @@ public abstract class AnswerBase : MonoBehaviour
         isAnswerCorrect = false;
     }
 
-    public bool GetAnswerCorrect()
+    private void InitGameData(GameDatabase.Metadata _gameData)
     {
-        TestAnswerCorrect();
-        return isAnswerCorrect;
+        chosenGame = _gameData;
+        guessButton.interactable = false;
+        Initialise();
     }
+
 
     private void OnDestroy()
     {

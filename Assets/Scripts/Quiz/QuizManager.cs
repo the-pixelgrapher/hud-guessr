@@ -6,6 +6,10 @@ using TMPro;
 
 public class QuizManager : MonoBehaviour
 {
+    public event System.Action<GameDatabase.Metadata> InitGameData;
+    public event System.Action<GameMode> SetGameMode;
+    public static QuizManager current;
+
     public enum GameMode
     {
         Unset,
@@ -13,11 +17,16 @@ public class QuizManager : MonoBehaviour
         [Description("Text Field")] TextField
     }
 
-    public GameMode gameMode;
-    public event System.Action<GameDatabase.Metadata> InitGameData;
-    public event System.Action<GameMode> SetGameMode;
-    public int numberOfRounds = 5;
-    public static QuizManager current;
+    [System.Serializable]
+    public struct Settings
+    {
+        public GameMode gameMode;
+        public int multiAnswerCount;
+        public int numberOfRounds;
+        public float timeLimit;
+    }
+
+    public Settings settings;
 
     [SerializeField] private GameDatabase database;
     [SerializeField] private GameHistory history;
@@ -36,20 +45,59 @@ public class QuizManager : MonoBehaviour
     {
         current = this;
         gameList = new List<GameDatabase.Metadata>();
-        StartCoroutine(InitGameMode());
+        StartCoroutine(UnsetGameMode());
     }
 
-    IEnumerator InitGameMode()
+    IEnumerator UnsetGameMode()
     {
         yield return null;
-        SetGameMode(gameMode);
+        SetGameMode(GameMode.Unset);
+    }
+
+    public void StartGame()
+    {
+        WindowManager.current.HideWindow("TitleScreen");
+        WindowManager.current.HideWindow("GameSettingsWindow");
+
+        multiChoiceAnswer.answerCount = settings.multiAnswerCount;
+
+        if (!isInit)
+            InitGame();
+        else
+            SetGameMode(settings.gameMode);
+    }
+
+    public void Guess()
+    {
+        if (isAnswerSubmitted)
+            return;
+
+        switch (settings.gameMode)
+        {
+            case GameMode.MultiChoice:
+                if (multiChoiceAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
+                else { BeginWrongAnswerSequence(); }
+                break;
+
+            case GameMode.TextField:
+                if (textFieldAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
+                else { BeginWrongAnswerSequence(); }
+                break;
+        }
+    }
+
+    public void EndGame()
+    {
+        settings.gameMode = GameMode.Unset;
+        SetGameMode(settings.gameMode);
+        titleScreen.OpenWindow();
     }
 
     private void GenerateGameList()
     {
         // Generate a random list of games of a specified amount
         gameList = new List<GameDatabase.Metadata>();
-        int _amount = numberOfRounds;
+        int _amount = settings.numberOfRounds;
         _amount = Mathf.Clamp(_amount, 1, database.gameData.Length);
 
         // Add all games to temp collection
@@ -68,30 +116,6 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    public void StartGameMode(GameMode _mode)
-    {
-        gameMode = _mode;
-        StartGame();
-    }
-
-    public void StartGame()
-    {
-        WindowManager.current.HideWindow("TitleScreen");
-        WindowManager.current.HideWindow("GameSettingsWindow");
-
-        if (!isInit)
-            InitGame();
-        else
-            SetGameMode(gameMode);
-    }
-
-    public void EndGame()
-    {
-        gameMode = GameMode.Unset;
-        SetGameMode(gameMode);
-        titleScreen.OpenWindow();
-    }
-
     private void InitGame()
     {
         isAnswerSubmitted = false;
@@ -108,7 +132,7 @@ public class QuizManager : MonoBehaviour
         history.AddEntry(chosenGame);
 
         InitGameData(chosenGame);
-        SetGameMode(gameMode);
+        SetGameMode(settings.gameMode);
 
         isInit = true;
     }
@@ -123,24 +147,5 @@ public class QuizManager : MonoBehaviour
         WindowManager.current.ShowWindow("IncorrectAnswerWindow");
         correctAnswerText.text = "The game was: " + chosenGame.displayName;
         isAnswerSubmitted = true;
-    }
-
-    public void Guess()
-    {
-        if (isAnswerSubmitted)
-            return;
-
-        switch (gameMode)
-        {
-            case GameMode.MultiChoice:
-                if (multiChoiceAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
-                else{ BeginWrongAnswerSequence(); }
-                break;
-
-            case GameMode.TextField:
-                if (textFieldAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
-                else { BeginWrongAnswerSequence(); }
-                break;
-        }
     }
 }

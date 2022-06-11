@@ -494,8 +494,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87621ef22a86cb439c348a00ce42f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMode: 0
-  numberOfRounds: 100
+  settings:
+    gameMode: 0
+    multiAnswerCount: 4
+    numberOfRounds: 100
+    timeLimit: 15
   database: {fileID: 11400000, guid: cf36e95f206f25f438a9c7b42888f591, type: 2}
   history: {fileID: 147680985}
   multiChoiceAnswer: {fileID: 606521645}
