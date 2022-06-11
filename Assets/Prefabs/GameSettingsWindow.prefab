@@ -736,15 +736,31 @@ PrefabInstance:
     m_TransformParent: {fileID: 869121482899583891}
     m_Modifications:
     - target: {fileID: 2325752615169468022, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325752615169468022, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325752615169468022, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 869121483130386170}
+    - target: {fileID: 2325752615169468022, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2325752615169468022, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseWindow
       objectReference: {fileID: 0}
     - target: {fileID: 2325752615169468022, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Window, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325752615169468022, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: Window, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2325752615169468023, guid: e7e6fd590904e424bbbe323a28f61946, type: 3}
