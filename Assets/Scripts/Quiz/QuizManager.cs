@@ -147,7 +147,7 @@ public class QuizManager : MonoBehaviour
         SetGameMode(settings.gameMode);
 
         // Set timer widget
-        if ((settings.timeLimit - Mathf.Epsilon) < modeData.maxTimeLimit)
+        if (!Mathf.Approximately(settings.timeLimit, modeData.maxTimeLimit + 1))
         {
             timer.SetTimer(settings.timeLimit);
         }
