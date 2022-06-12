@@ -38,31 +38,32 @@ public class UITweener : MonoBehaviour
     public void PlayIntroTween()
     {
         ResetIntroTween();
+        float _delay = intro.TweenInterval * transform.GetSiblingIndex();
 
         if (canvas != null && intro.DoFade)
         {
             fadeTween = canvas.DOFade(intro.FadeEndAlpha, intro.FadeDuration)
-                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex());
+                .SetDelay(_delay);
         }
 
         if (intro.DoScale)
         {
             scaleTween = rectTransform.DOScale(Vector3.one, intro.ScaleDuration)
-                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex())
+                .SetDelay(_delay)
                 .SetEase(intro.ScaleEase);
         }
 
         if (intro.DoMove)
         {
             moveTween = rectTransform.DOLocalMove(initialPostion, intro.MoveDuration)
-                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex())
+                .SetDelay(_delay)
                 .SetEase(intro.MoveEase);
         }
 
         if (intro.DoRotate)
         {
             rotateTween = rectTransform.DOLocalRotate(initialRotation, intro.RotateDuration)
-                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex())
+                .SetDelay(_delay)
                 .SetEase(intro.RotateEase);
         }
     }

@@ -11,6 +11,10 @@ public class TimerWidget : MonoBehaviour
     [SerializeField] private GameObject widget;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private Image timerRing;
+    [SerializeField] private UITweener tweener;
+    [SerializeField, Tooltip("When timer reaches this value, a pulse tween will play every second")] 
+    private int criticalTimeThreshold = 3;
+    private int prevTimeValue;
 
     private bool timerStarted;
     private float startTime;
@@ -22,6 +26,7 @@ public class TimerWidget : MonoBehaviour
         startTime = _time;
         timerStarted = true;
         isPaused = false;
+        tweener.PlayIntroTween();
     }
 
     public void PauseTimer()
@@ -53,7 +58,15 @@ public class TimerWidget : MonoBehaviour
 
         // Update widget
         float _percent = timeLeft / startTime;
-        timerText.text = Mathf.Ceil(timeLeft).ToString();
+        int _displayTime = Mathf.CeilToInt(timeLeft);
+        timerText.text = _displayTime.ToString();
         timerRing.fillAmount = _percent;
+
+        // Play pulse animation every second when at or below criticalTimeThreshold
+        if (_displayTime <= criticalTimeThreshold && _displayTime < prevTimeValue)
+        {
+            tweener.PlayIntroTween();
+        }
+        prevTimeValue = _displayTime;
     }
 }

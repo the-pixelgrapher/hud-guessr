@@ -152,7 +152,7 @@ MonoBehaviour:
     fadeEndAlpha: 1
     doScale: 1
     scaleDuration: 1
-    scaleStart: {x: 1.5, y: 1.5, z: 1}
+    scaleStart: {x: 0.75, y: 0.75, z: 1}
     scaleEase: 24
     doMove: 0
     moveDuration: 0.5
@@ -427,3 +427,5 @@ MonoBehaviour:
   widget: {fileID: 5433797938970754333}
   timerText: {fileID: 5433797940000274736}
   timerRing: {fileID: 5433797939018247413}
+  tweener: {fileID: 1891964810053225688}
+  criticalTimeThreshold: 3
