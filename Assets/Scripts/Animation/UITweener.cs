@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class OnEnableTween : MonoBehaviour
+public class UITweener : MonoBehaviour
 {
     [SerializeField] private CanvasGroup m_canvas;
     [SerializeField] private Transform rectTransform;

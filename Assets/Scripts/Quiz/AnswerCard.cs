@@ -13,7 +13,7 @@ public class AnswerCard : MonoBehaviour
 
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private GameObject marker;
-    [SerializeField] private OnEnableTween tweener;
+    [SerializeField] private UITweener tweener;
 
     private MultiChoiceAnswer manager;
 
