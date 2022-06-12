@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4278768626217925423}
   - component: {fileID: 4278768626217925416}
   - component: {fileID: 107931698356649583}
+  - component: {fileID: 28181560236218011}
+  - component: {fileID: 6887571737754717723}
   m_Layer: 5
   m_Name: HUDGraphicImage
   m_TagString: Untagged
@@ -90,3 +92,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hudGraphicImage: {fileID: 4278768626217925416}
+  tweener: {fileID: 28181560236218011}
+--- !u!114 &28181560236218011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278768626217925418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f777e65ce057c1d4e8053b4a7ea4e988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 6887571737754717723}
+  rectTransform: {fileID: 4278768626217925417}
+  intro:
+    tweenDelay: 0
+    tweenInterval: 0
+    playOnEnable: 1
+    doFade: 1
+    fadeDuration: 0.25
+    fadeEndAlpha: 1
+    doScale: 1
+    scaleDuration: 0.8
+    scaleStart: {x: 0.9, y: 0.9, z: 1}
+    scaleEase: 18
+    doMove: 0
+    moveDuration: 0.5
+    moveStart: {x: 0, y: 0, z: 0}
+    moveEase: 6
+    doRotate: 0
+    rotateDuration: 0.5
+    rotateStart: {x: 0, y: 0, z: 0}
+    rotateEase: 6
+--- !u!225 &6887571737754717723
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4278768626217925418}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
