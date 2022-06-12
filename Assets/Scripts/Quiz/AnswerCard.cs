@@ -13,6 +13,7 @@ public class AnswerCard : MonoBehaviour
 
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private GameObject marker;
+    [SerializeField] private OnEnableTween tweener;
 
     private MultiChoiceAnswer manager;
 
@@ -23,6 +24,7 @@ public class AnswerCard : MonoBehaviour
 
         marker.SetActive(false);
         buttonText.text = answerInfo.displayName;
+        tweener.PlayTween();
     }
 
     public void SelectGame()
