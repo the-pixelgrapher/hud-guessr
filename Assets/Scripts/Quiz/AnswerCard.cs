@@ -24,7 +24,7 @@ public class AnswerCard : MonoBehaviour
 
         marker.SetActive(false);
         buttonText.text = answerInfo.displayName;
-        tweener.PlayTween();
+        tweener.PlayIntroTween();
     }
 
     public void SelectGame()

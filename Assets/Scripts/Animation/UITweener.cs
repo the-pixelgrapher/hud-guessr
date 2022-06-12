@@ -1,14 +1,20 @@
 using UnityEngine;
+using UnityEditor;
 using DG.Tweening;
 
 public class UITweener : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup m_canvas;
+    [SerializeField] private CanvasGroup canvas;
     [SerializeField] private Transform rectTransform;
-    [SerializeField] private TweenParams m_tweenSettings;
+    [SerializeField] private TweenParams intro;
+
+    private Vector3 initialPostion;
+    private Vector3 initialRotation;
 
     private Tween fadeTween = null;
     private Tween scaleTween = null;
+    private Tween moveTween = null;
+    private Tween rotateTween = null;
 
     private void Awake()
     {
@@ -16,37 +22,86 @@ public class UITweener : MonoBehaviour
         {
             rectTransform = transform;
         }
+
+        initialPostion = transform.localPosition;
+        initialRotation = transform.localEulerAngles;
     }
 
     private void OnEnable()
     {
-        PlayTween();
+        if (intro.PlayOnEnable)
+        {
+            PlayIntroTween();
+        }
     }
 
-    public void PlayTween()
+    public void PlayIntroTween()
     {
-        ResetTween();
+        ResetIntroTween();
 
-        fadeTween = m_canvas.DOFade(m_tweenSettings.FadeEndAlpha, m_tweenSettings.FadeDuration)
-            .SetDelay(m_tweenSettings.TweenInterval * transform.GetSiblingIndex());
+        if (canvas != null && intro.DoFade)
+        {
+            fadeTween = canvas.DOFade(intro.FadeEndAlpha, intro.FadeDuration)
+                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex());
+        }
 
-        scaleTween = rectTransform.DOScale(m_tweenSettings.ScaleEnd, m_tweenSettings.ScaleDuration)
-            .SetDelay(m_tweenSettings.TweenInterval * transform.GetSiblingIndex())
-            .SetEase(m_tweenSettings.ScaleEase);
+        if (intro.DoScale)
+        {
+            scaleTween = rectTransform.DOScale(Vector3.one, intro.ScaleDuration)
+                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex())
+                .SetEase(intro.ScaleEase);
+        }
+
+        if (intro.DoMove)
+        {
+            moveTween = rectTransform.DOLocalMove(initialPostion, intro.MoveDuration)
+                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex())
+                .SetEase(intro.MoveEase);
+        }
+
+        if (intro.DoRotate)
+        {
+            rotateTween = rectTransform.DOLocalRotate(initialRotation, intro.RotateDuration)
+                .SetDelay(intro.TweenInterval * transform.GetSiblingIndex())
+                .SetEase(intro.RotateEase);
+        }
     }
 
-    public void ResetTween()
+    public void ResetIntroTween()
+    {
+        KillAllTweens();
+
+        if (canvas != null && intro.DoFade)
+        {
+            canvas.alpha = 1.0f - intro.FadeEndAlpha;
+        }
+
+        if (intro.DoScale)
+        {
+            rectTransform.localScale = intro.ScaleStart;
+        }
+
+        if (intro.DoMove)
+        {
+            rectTransform.localPosition = intro.MoveStart;
+        }
+
+        if (intro.DoRotate)
+        {
+            rectTransform.localEulerAngles = initialRotation;
+        }
+    }
+
+    private void KillAllTweens()
     {
         fadeTween?.Kill(true);
         scaleTween?.Kill(true);
-
-        m_canvas.alpha = 1.0f - m_tweenSettings.FadeEndAlpha;
-        rectTransform.localScale = m_tweenSettings.ScaleStart;
+        moveTween?.Kill(true);
+        rotateTween?.Kill(true);
     }
 
     private void OnDestroy()
     {
-        fadeTween?.Kill(true);
-        scaleTween?.Kill(true);
+        KillAllTweens();
     }
 }

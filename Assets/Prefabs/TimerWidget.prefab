@@ -141,16 +141,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f777e65ce057c1d4e8053b4a7ea4e988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_canvas: {fileID: 3420334520788586976}
-  m_tweenSettings:
-    m_tweenDelay: 0
-    m_tweenInterval: 0
-    m_fadeDuration: 0.2
-    m_fadeEndAlpha: 1
-    m_scaleDuration: 1
-    m_scaleStart: {x: 1.5, y: 1.5, z: 1}
-    m_scaleEnd: {x: 1, y: 1, z: 1}
-    m_scaleEase: 24
+  canvas: {fileID: 3420334520788586976}
+  rectTransform: {fileID: 5433797938970754332}
+  intro:
+    tweenDelay: 0
+    tweenInterval: 0
+    playOnEnable: 1
+    doFade: 1
+    fadeDuration: 0.2
+    fadeEndAlpha: 1
+    doScale: 1
+    scaleDuration: 1
+    scaleStart: {x: 1.5, y: 1.5, z: 1}
+    scaleEase: 24
+    doMove: 0
+    moveDuration: 0.5
+    moveStart: {x: 0, y: 0, z: 0}
+    moveEase: 6
+    doRotate: 0
+    rotateDuration: 0.5
+    rotateStart: {x: 0, y: 0, z: 0}
+    rotateEase: 6
 --- !u!1 &5433797939018247415
 GameObject:
   m_ObjectHideFlags: 0
