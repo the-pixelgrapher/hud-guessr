@@ -431,16 +431,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f777e65ce057c1d4e8053b4a7ea4e988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_canvas: {fileID: 8025782781722428398}
-  m_tweenSettings:
-    m_tweenDelay: 0
-    m_tweenInterval: 0
-    m_fadeDuration: 0.25
-    m_fadeEndAlpha: 1
-    m_scaleDuration: 0.5
-    m_scaleStart: {x: 0.75, y: 0.75, z: 1}
-    m_scaleEnd: {x: 1, y: 1, z: 1}
-    m_scaleEase: 18
+  canvas: {fileID: 8025782781722428398}
+  rectTransform: {fileID: 3738110104909359127}
+  intro:
+    tweenDelay: 0
+    tweenInterval: 0
+    playOnEnable: 1
+    doFade: 1
+    fadeDuration: 0.25
+    fadeEndAlpha: 1
+    doScale: 1
+    scaleDuration: 0.5
+    scaleStart: {x: 0.75, y: 0.75, z: 0}
+    scaleEase: 18
+    doMove: 0
+    moveDuration: 0.5
+    moveStart: {x: 0, y: 0, z: 0}
+    moveEase: 6
+    doRotate: 0
+    rotateDuration: 0.5
+    rotateStart: {x: 0, y: 0, z: 0}
+    rotateEase: 6
 --- !u!225 &8025782781722428398
 CanvasGroup:
   m_ObjectHideFlags: 0

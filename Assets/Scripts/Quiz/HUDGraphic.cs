@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class HUDGraphic : MonoBehaviour
 {
     [SerializeField] private Image hudGraphicImage;
+    [SerializeField] private UITweener tweener;
 
     private void Start()
     {
@@ -13,5 +14,6 @@ public class HUDGraphic : MonoBehaviour
     public void InitHUDImage(GameDatabase.Metadata _gameData)
     {
         hudGraphicImage.sprite = _gameData.hudGraphic;
+        tweener.PlayIntroTween();
     }
 }

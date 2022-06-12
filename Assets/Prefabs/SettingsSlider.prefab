@@ -52,16 +52,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f777e65ce057c1d4e8053b4a7ea4e988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_canvas: {fileID: 7569928304853428350}
-  m_tweenSettings:
-    m_tweenDelay: 0
-    m_tweenInterval: 0.1
-    m_fadeDuration: 0.2
-    m_fadeEndAlpha: 1
-    m_scaleDuration: 0.4
-    m_scaleStart: {x: 0.75, y: 0.75, z: 0}
-    m_scaleEnd: {x: 1, y: 1, z: 1}
-    m_scaleEase: 18
+  canvas: {fileID: 7569928304853428350}
+  rectTransform: {fileID: 4609091890023910018}
+  intro:
+    tweenDelay: 0
+    tweenInterval: 0.1
+    playOnEnable: 1
+    doFade: 1
+    fadeDuration: 0.2
+    fadeEndAlpha: 1
+    doScale: 1
+    scaleDuration: 0.4
+    scaleStart: {x: 0.75, y: 0.75, z: 0}
+    scaleEase: 18
+    doMove: 0
+    moveDuration: 0.5
+    moveStart: {x: 0, y: 0, z: 0}
+    moveEase: 6
+    doRotate: 0
+    rotateDuration: 0.5
+    rotateStart: {x: 0, y: 0, z: 0}
+    rotateEase: 6
 --- !u!225 &7569928304853428350
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -226,11 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274213315562641492, guid: 902e65d75aa8fb343ad1a3751f7b8238, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2274213315562641492, guid: 902e65d75aa8fb343ad1a3751f7b8238, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3937451505800928064, guid: 902e65d75aa8fb343ad1a3751f7b8238, type: 3}
       propertyPath: m_Pivot.x

@@ -84,13 +84,11 @@ public class QuizManager : MonoBehaviour
         switch (settings.gameMode)
         {
             case GameMode.MultiChoice:
-                if (multiChoiceAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
-                else { BeginWrongAnswerSequence(); }
+                BeginAnswerSequence(multiChoiceAnswer.GetAnswerCorrect());
                 break;
 
             case GameMode.TextField:
-                if (textFieldAnswer.GetAnswerCorrect()) { BeginCorrectAnswerSequence(); }
-                else { BeginWrongAnswerSequence(); }
+                BeginAnswerSequence(textFieldAnswer.GetAnswerCorrect());
                 break;
         }
 
@@ -147,7 +145,7 @@ public class QuizManager : MonoBehaviour
         SetGameMode(settings.gameMode);
 
         // Set timer widget
-        if ((settings.timeLimit - Mathf.Epsilon) < modeData.maxTimeLimit)
+        if (!Mathf.Approximately(settings.timeLimit, modeData.maxTimeLimit + 1))
         {
             timer.SetTimer(settings.timeLimit);
         }
@@ -160,16 +158,17 @@ public class QuizManager : MonoBehaviour
         isPlaying = true;
     }
 
-    private void BeginCorrectAnswerSequence()
+    private void BeginAnswerSequence(bool _correct)
     {
-        WindowManager.current.ShowWindow("CorrectAnswerWindow");
-        isAnswerSubmitted = true;
-        isPlaying = false;
-    }
-    private void BeginWrongAnswerSequence()
-    {
-        WindowManager.current.ShowWindow("IncorrectAnswerWindow");
-        correctAnswerText.text = "The game was: " + chosenGame.displayName;
+        if (_correct)
+        {
+            WindowManager.current.ShowWindow("CorrectAnswerWindow");
+        }
+        else
+        {
+            WindowManager.current.ShowWindow("IncorrectAnswerWindow");
+            correctAnswerText.text = "The game was: " + chosenGame.displayName;
+        }
         isAnswerSubmitted = true;
         isPlaying = false;
     }
