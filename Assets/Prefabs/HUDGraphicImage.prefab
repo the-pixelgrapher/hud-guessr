@@ -115,8 +115,8 @@ MonoBehaviour:
     fadeDuration: 0.25
     fadeEndAlpha: 1
     doScale: 1
-    scaleDuration: 0.8
-    scaleStart: {x: 0.9, y: 0.9, z: 1}
+    scaleDuration: 1
+    scaleStart: {x: 0.85, y: 0.85, z: 1}
     scaleEase: 18
     doMove: 0
     moveDuration: 0.5
