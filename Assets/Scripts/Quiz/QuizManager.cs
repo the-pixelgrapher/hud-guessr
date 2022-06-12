@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using TMPro;
 
@@ -13,8 +12,8 @@ public class QuizManager : MonoBehaviour
     public enum GameMode
     {
         Unset,
-        [Description("Multi Choice")] MultiChoice,
-        [Description("Text Field")] TextField
+        MultiChoice,
+        TextField
     }
 
     [System.Serializable]
@@ -68,6 +67,37 @@ public class QuizManager : MonoBehaviour
         else
             SetGameMode(settings.gameMode);
 
+        isPlaying = true;
+    }
+
+    public void InitGame()
+    {
+        isAnswerSubmitted = false;
+
+        // Generate game list if empty
+        if (gameList.Count < 1)
+        {
+            GenerateGameList();
+        }
+        // Select first game from list
+        chosenGame = gameList[0];
+        gameList.RemoveAt(0);
+
+        // Send game data events
+        InitGameData(chosenGame);
+        SetGameMode(settings.gameMode);
+
+        // Set timer widget
+        if (!Mathf.Approximately(settings.timeLimit, modeData.maxTimeLimit + 1))
+        {
+            timer.SetTimer(settings.timeLimit);
+        }
+        else
+        {
+            timer.StopTimer();
+        }
+
+        isInit = true;
         isPlaying = true;
     }
 
@@ -126,38 +156,6 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    private void InitGame()
-    {
-        isAnswerSubmitted = false;
-
-        // Generate game list if empty
-        if (gameList.Count < 1)
-        {
-            GenerateGameList();
-        }
-        // Select first game from list
-        chosenGame = gameList[0];
-        gameList.RemoveAt(0);
-        history.AddEntry(chosenGame);
-
-        // Send game data events
-        InitGameData(chosenGame);
-        SetGameMode(settings.gameMode);
-
-        // Set timer widget
-        if (!Mathf.Approximately(settings.timeLimit, modeData.maxTimeLimit + 1))
-        {
-            timer.SetTimer(settings.timeLimit);
-        }
-        else
-        {
-            timer.StopTimer();
-        }
-
-        isInit = true;
-        isPlaying = true;
-    }
-
     private void BeginAnswerSequence(bool _correct)
     {
         if (_correct)
@@ -167,9 +165,10 @@ public class QuizManager : MonoBehaviour
         else
         {
             WindowManager.current.ShowWindow("IncorrectAnswerWindow");
-            correctAnswerText.text = "The game was: " + chosenGame.displayName;
+            correctAnswerText.text = "Should've chosen " + chosenGame.displayName;
         }
         isAnswerSubmitted = true;
+        history.AddEntry(chosenGame, _correct);
         isPlaying = false;
     }
 }

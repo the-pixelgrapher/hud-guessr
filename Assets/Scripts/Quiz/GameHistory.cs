@@ -1,13 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameHistory : MonoBehaviour
 {
-    public List<string> historyEntry;
-
-    public void AddEntry(GameDatabase.Metadata _game)
+    [System.Serializable]
+    public struct HistoryEntry
     {
-        historyEntry.Add(_game.id);
+        public string id;
+        public bool answerCorrect;
+    }
+
+    public List<HistoryEntry> entry;
+
+    public void AddEntry(GameDatabase.Metadata _game, bool _correct)
+    {
+        HistoryEntry _entry = new HistoryEntry
+        {
+            id = _game.id,
+            answerCorrect = _correct
+        };
+
+        entry.Add(_entry);
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor;
 using DG.Tweening;
 
 public class UITweener : MonoBehaviour
