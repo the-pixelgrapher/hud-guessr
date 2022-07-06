@@ -14,7 +14,7 @@ public class UITweener : MonoBehaviour
     private Tween scaleTween = null;
     private Tween moveTween = null;
     private Tween rotateTween = null;
-
+    
     private void Awake()
     {
         if (rectTransform == null)
@@ -37,7 +37,7 @@ public class UITweener : MonoBehaviour
     public void PlayIntroTween()
     {
         ResetIntroTween();
-        float _delay = intro.TweenInterval * transform.GetSiblingIndex();
+        float _delay = intro.TweenInterval * transform.GetSiblingIndex() + intro.TweenDelay;
 
         if (canvas != null && intro.DoFade)
         {
@@ -83,7 +83,7 @@ public class UITweener : MonoBehaviour
 
         if (intro.DoMove)
         {
-            rectTransform.localPosition = intro.MoveStart;
+            rectTransform.localPosition = initialPostion + intro.MoveStart;
         }
 
         if (intro.DoRotate)
