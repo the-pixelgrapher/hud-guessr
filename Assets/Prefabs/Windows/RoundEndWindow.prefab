@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 269803481572812338, guid: 56a530930c6eadb49a371d6f471e8826, type: 3}
       propertyPath: m_Name
-      value: GenericResultWindow
+      value: RoundEndWindow
       objectReference: {fileID: 0}
     - target: {fileID: 269803481572812339, guid: 56a530930c6eadb49a371d6f471e8826, type: 3}
       propertyPath: m_Pivot.x
