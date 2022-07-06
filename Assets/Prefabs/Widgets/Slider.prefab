@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6575343, g: 0.34931508, b: 0.75, a: 1}
+  m_Color: {r: 0.5176471, g: 0.3372549, b: 0.93333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -328,6 +328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 6617372999059548447}
   slider: {fileID: 3089456323977725986}
+  minText: 
+  maxText: 
 --- !u!1 &5203492836130641157
 GameObject:
   m_ObjectHideFlags: 0
