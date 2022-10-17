@@ -40,7 +40,8 @@ public class QuizManager : MonoBehaviour
     private GameDatabase.Metadata chosenGame;
     private bool isInit;
     private bool isAnswerSubmitted;
-    public bool isPlaying;
+    private bool isPlaying;
+    private int roundCounter;
 
     private void Awake()
     {
@@ -169,6 +170,7 @@ public class QuizManager : MonoBehaviour
         }
         isAnswerSubmitted = true;
         history.AddEntry(chosenGame, _correct);
+        roundCounter++;
         isPlaying = false;
     }
 }
