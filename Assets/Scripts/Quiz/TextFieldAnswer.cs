@@ -23,6 +23,11 @@ public class TextFieldAnswer : AnswerBase
     {
         base.TestAnswerCorrect();
 
+        if (string.IsNullOrEmpty(givenAnswer))
+        {
+            return;
+        }
+
         // Add all accepted answers to list
         var _acceptedAnswers = new List<string>();
 
