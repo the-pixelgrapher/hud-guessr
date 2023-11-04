@@ -34,6 +34,7 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
     [SerializeField] private TextFieldAnswer textFieldAnswer;
     [SerializeField] private TimerWidget timer;
+    [SerializeField] private ProgressWidget progressWidget;
     [SerializeField] TMP_Text correctAnswerText;
 
     private List<GameDatabase.Metadata> gameList;
@@ -107,6 +108,10 @@ public class QuizManager : MonoBehaviour
             timer.StopTimer();
         }
 
+        // Set progress display
+        progressWidget.SetVisibility(true);
+        progressWidget.SetProgressDisplay(roundCounter, settings.numberOfRounds);
+
         isInit = true;
         isPlaying = true;
     }
@@ -139,11 +144,13 @@ public class QuizManager : MonoBehaviour
     {
         history.ClearHistory();
         timer.StopTimer();
+        progressWidget.SetVisibility(false);
+        roundCounter = 0;
         settings.gameMode = GameMode.Unset;
         SetGameMode(settings.gameMode);
-        WindowManager.current.ShowWindow("TitleScreen");
         isInit = false;
         isPlaying = false;
+        WindowManager.current.ShowWindow("TitleScreen");
     }
 
     private void GenerateGameList()
