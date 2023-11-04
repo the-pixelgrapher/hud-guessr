@@ -76,10 +76,19 @@ public class QuizManager : MonoBehaviour
         isAnswerSubmitted = false;
 
         // Generate game list if empty
-        if (gameList.Count < 1)
+        if (!isInit)
         {
             GenerateGameList();
         }
+
+        if (gameList.Count < 1)
+        {
+            WindowManager.current.ShowWindow("ResultsScreen");
+            ResultsScreen.current.ShowResult(history.GetCorrectAnswerCount(), history.entry.Count);
+            isPlaying = false;
+            return;
+        }
+
         // Select first game from list
         chosenGame = gameList[0];
         gameList.RemoveAt(0);
@@ -128,9 +137,12 @@ public class QuizManager : MonoBehaviour
 
     public void EndGame()
     {
+        history.ClearHistory();
+        timer.StopTimer();
         settings.gameMode = GameMode.Unset;
         SetGameMode(settings.gameMode);
         WindowManager.current.ShowWindow("TitleScreen");
+        isInit = false;
         isPlaying = false;
     }
 

@@ -22,4 +22,24 @@ public class GameHistory : MonoBehaviour
 
         entry.Add(_entry);
     }
+
+    public int GetCorrectAnswerCount()
+    {
+        int count = 0;
+
+        for (int i = 0; i < entry.Count; i++)
+        {
+            if (entry[i].answerCorrect)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public void ClearHistory()
+    {
+        entry.Clear();
+    }
 }
