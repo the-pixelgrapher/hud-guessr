@@ -34,7 +34,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 782853434101197395}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -98,11 +97,11 @@ MonoBehaviour:
     tweenInterval: 0
     playOnEnable: 1
     doFade: 1
-    fadeDuration: 0.2
+    fadeDuration: 0.1
     fadeEndAlpha: 1
     doScale: 1
-    scaleDuration: 0.35
-    scaleStart: {x: 2, y: 2, z: 1}
+    scaleDuration: 0.3
+    scaleStart: {x: 3, y: 3, z: 1}
     scaleEase: 27
     doMove: 0
     moveDuration: 0.5
@@ -173,7 +172,6 @@ RectTransform:
   m_Children:
   - {fileID: 782853434101197395}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -323,7 +321,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 782853434101197395}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -462,7 +459,6 @@ RectTransform:
   - {fileID: 8509166555018851302}
   - {fileID: 6490690649666157419}
   m_Father: {fileID: 8509166554856035758}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
