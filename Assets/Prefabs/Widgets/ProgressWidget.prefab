@@ -261,8 +261,8 @@ MonoBehaviour:
   widget: {fileID: 8063935413072364572}
   progressBar: {fileID: 3229540091380859772}
   progressText: {fileID: 1126132166503561804}
-  barTweenDuration: 0.4
-  barTweenEase: 27
+  barTweenDuration: 1
+  barTweenEase: 16
 --- !u!1 &8063935413072364572
 GameObject:
   m_ObjectHideFlags: 0
