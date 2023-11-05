@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using TMPro;
 
@@ -13,8 +12,8 @@ public class QuizManager : MonoBehaviour
     public enum GameMode
     {
         Unset,
-        [Description("Multi Choice")] MultiChoice,
-        [Description("Text Field")] TextField
+        MultiChoice,
+        TextField
     }
 
     [System.Serializable]
@@ -35,13 +34,15 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
     [SerializeField] private TextFieldAnswer textFieldAnswer;
     [SerializeField] private TimerWidget timer;
+    [SerializeField] private ProgressWidget progressWidget;
     [SerializeField] TMP_Text correctAnswerText;
 
     private List<GameDatabase.Metadata> gameList;
     private GameDatabase.Metadata chosenGame;
     private bool isInit;
     private bool isAnswerSubmitted;
-    public bool isPlaying;
+    private bool isPlaying;
+    private int roundCounter;
 
     private void Awake()
     {
@@ -71,6 +72,50 @@ public class QuizManager : MonoBehaviour
         isPlaying = true;
     }
 
+    public void InitGame()
+    {
+        isAnswerSubmitted = false;
+
+        // Generate game list if empty
+        if (!isInit)
+        {
+            GenerateGameList();
+        }
+
+        if (gameList.Count < 1)
+        {
+            WindowManager.current.ShowWindow("ResultsScreen");
+            ResultsScreen.current.ShowResult(history.GetCorrectAnswerCount(), history.entry.Count);
+            isPlaying = false;
+            return;
+        }
+
+        // Select first game from list
+        chosenGame = gameList[0];
+        gameList.RemoveAt(0);
+
+        // Send game data events
+        InitGameData(chosenGame);
+        SetGameMode(settings.gameMode);
+
+        // Set timer widget
+        if (!Mathf.Approximately(settings.timeLimit, modeData.maxTimeLimit + 1))
+        {
+            timer.SetTimer(settings.timeLimit);
+        }
+        else
+        {
+            timer.StopTimer();
+        }
+
+        // Set progress display
+        progressWidget.SetVisibility(true);
+        progressWidget.SetProgressDisplay(roundCounter, settings.numberOfRounds);
+
+        isInit = true;
+        isPlaying = true;
+    }
+
     public bool GetIsPlaying()
     {
         return isPlaying;
@@ -97,10 +142,15 @@ public class QuizManager : MonoBehaviour
 
     public void EndGame()
     {
+        history.ClearHistory();
+        timer.StopTimer();
+        progressWidget.SetVisibility(false);
+        roundCounter = 0;
         settings.gameMode = GameMode.Unset;
         SetGameMode(settings.gameMode);
-        WindowManager.current.ShowWindow("TitleScreen");
+        isInit = false;
         isPlaying = false;
+        WindowManager.current.ShowWindow("TitleScreen");
     }
 
     private void GenerateGameList()
@@ -126,38 +176,6 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    private void InitGame()
-    {
-        isAnswerSubmitted = false;
-
-        // Generate game list if empty
-        if (gameList.Count < 1)
-        {
-            GenerateGameList();
-        }
-        // Select first game from list
-        chosenGame = gameList[0];
-        gameList.RemoveAt(0);
-        history.AddEntry(chosenGame);
-
-        // Send game data events
-        InitGameData(chosenGame);
-        SetGameMode(settings.gameMode);
-
-        // Set timer widget
-        if (!Mathf.Approximately(settings.timeLimit, modeData.maxTimeLimit + 1))
-        {
-            timer.SetTimer(settings.timeLimit);
-        }
-        else
-        {
-            timer.StopTimer();
-        }
-
-        isInit = true;
-        isPlaying = true;
-    }
-
     private void BeginAnswerSequence(bool _correct)
     {
         if (_correct)
@@ -167,9 +185,11 @@ public class QuizManager : MonoBehaviour
         else
         {
             WindowManager.current.ShowWindow("IncorrectAnswerWindow");
-            correctAnswerText.text = "The game was: " + chosenGame.displayName;
+            correctAnswerText.text = "Should've chosen " + chosenGame.displayName;
         }
         isAnswerSubmitted = true;
+        history.AddEntry(chosenGame, _correct);
+        roundCounter++;
         isPlaying = false;
     }
 }
