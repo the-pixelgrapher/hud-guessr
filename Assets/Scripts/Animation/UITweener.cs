@@ -88,7 +88,7 @@ public class UITweener : MonoBehaviour
 
         if (intro.DoRotate)
         {
-            rectTransform.localEulerAngles = initialRotation;
+            rectTransform.localEulerAngles = initialRotation + intro.RotateStart;
         }
     }
 
