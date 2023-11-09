@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff3124c2557184438d43a3651612fc6, type: 3}
+  m_Name: gd_witcher-3
+  m_EditorClassIdentifier: 
+  id: witcher-3
+  displayName: The Witcher 3
+  hudGraphic: {fileID: 21300000, guid: 09f52f4499f5c554f9120bebb8f01e96, type: 3}
+  acceptedAnswers:
+  - wild hunt
+  - witcher 3
+  - w3
+  wrongAnswers:
+  - Darksiders
+  - 'Monster Hunter: Rise'
+  - Monster Hunter World
+  - The Witcher 2
+  - Ashen

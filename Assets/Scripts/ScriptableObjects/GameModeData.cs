@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameModesData", menuName = "ScriptableObjects/GameModeData", order = 1)]
+[CreateAssetMenu(fileName = "GameModesData", menuName = "ScriptableObjects/GameModeData", order = 2)]
 public class GameModeData : ScriptableObject
 {
     [System.Serializable]
