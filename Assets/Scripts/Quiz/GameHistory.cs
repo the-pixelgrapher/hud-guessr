@@ -12,7 +12,7 @@ public class GameHistory : MonoBehaviour
 
     public List<HistoryEntry> entry;
 
-    public void AddEntry(GameDatabase.Metadata _game, bool _correct)
+    public void AddEntry(GameData _game, bool _correct)
     {
         HistoryEntry _entry = new HistoryEntry
         {

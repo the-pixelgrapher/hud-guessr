@@ -3,17 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameDatabase", menuName = "ScriptableObjects/GameDatabase", order = 1)]
 public class GameDatabase : ScriptableObject
 {
-    [System.Serializable]
-    public struct Metadata
-    {
-        public string id;
-        public string displayName;
-        public Sprite hudGraphic;
-        public string[] acceptedAnswers;
-        public string[] wrongAnswers;
-    }
-
-    public Metadata[] gameData;
+    public GameData[] gameData;
 
     public int GetIndexFromID(string _id)
     {
@@ -35,13 +25,13 @@ public class GameDatabase : ScriptableObject
         return _index;
     }
 
-    public Metadata GetGameData(string _id)
+    public GameData GetGameData(string _id)
     {
-        Metadata _metaData = gameData[GetIndexFromID(_id)];
+        GameData _metaData = gameData[GetIndexFromID(_id)];
         return _metaData;
     }
 
-    public Metadata GetRandomGame()
+    public GameData GetRandomGame()
     {
         int _index = Random.Range(0, gameData.Length - 1);
 

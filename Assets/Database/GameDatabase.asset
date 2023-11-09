@@ -13,162 +13,18 @@ MonoBehaviour:
   m_Name: GameDatabase
   m_EditorClassIdentifier: 
   gameData:
-  - id: apexlegends
-    displayName: Apex Legends
-    hudGraphic: {fileID: 21300000, guid: 82331dc956734cc4e829c85dc1d1de76, type: 3}
-    acceptedAnswers:
-    - apex
-    - apexlegends
-    wrongAnswers:
-    - Destiny 2
-    - Valorant
-    - Doom Eternal
-    - Overwatch
-    - Rainbow Six Siege
-  - id: bloodborne
-    displayName: Bloodborne
-    hudGraphic: {fileID: 21300000, guid: 6bb9c08bd71918e489b267e5bf6f1c0c, type: 3}
-    acceptedAnswers:
-    - blood borne
-    wrongAnswers:
-    - Elden Ring
-    - Dark Souls 3
-    - Demon's Souls
-    - Nioh
-    - Blasphemous
-  - id: borderlands-3
-    displayName: Borderlands 3
-    hudGraphic: {fileID: 21300000, guid: 0dbdac7a0b00b3643b92c2ca0da730a8, type: 3}
-    acceptedAnswers: []
-    wrongAnswers:
-    - Borderlands
-    - Borderlands 2
-    - BioShock
-    - 'Fallout: New Vegas'
-    - Doom Eternal
-  - id: godofwar-4
-    displayName: God of War (2018)
-    hudGraphic: {fileID: 21300000, guid: 8a7eb170d2a2f5546bd67e1dced40cfc, type: 3}
-    acceptedAnswers:
-    - god of war
-    - gow
-    - gow4
-    wrongAnswers:
-    - 'The Elder Scrolls: Skyrim'
-    - 'Dragon Age: Inquisition'
-    - 'Dragon Age: Origins'
-    - Assassin's Creed Origins
-    - Horizon Forbidden West
-  - id: hades
-    displayName: Hades
-    hudGraphic: {fileID: 21300000, guid: 0b5fe1a754301a242aa94cc5554ccdc8, type: 3}
-    acceptedAnswers: []
-    wrongAnswers:
-    - Transistor
-    - Bastion
-    - Elden Ring
-    - Assassin's Creed Origins
-    - Dead Cells
-  - id: halo-infinite
-    displayName: Halo Infinite
-    hudGraphic: {fileID: 21300000, guid: 7205a0fc6b41111438db1b163fee28b8, type: 3}
-    acceptedAnswers:
-    - infinite
-    wrongAnswers:
-    - Metroid Prime
-    - Doom (2016)
-    - Borderlands 2
-    - Halo 4
-    - Destiny
-  - id: hollow-knight
-    displayName: Hollow Knight
-    hudGraphic: {fileID: 21300000, guid: 5ddf1df5619006d4eb2f1193a7b78839, type: 3}
-    acceptedAnswers:
-    - hk
-    wrongAnswers:
-    - Cuphead
-    - Twilight Princess
-    - Skyward Sword
-    - Dead Cells
-    - 'Bloodstained: Ritual of the Night'
-  - id: horizon-zerodawn
-    displayName: Horizon Zero Dawn
-    hudGraphic: {fileID: 21300000, guid: bcf3649c1f64b25419e342cc1af4b738, type: 3}
-    acceptedAnswers:
-    - horizon
-    - hzd
-    - zero dawn
-    wrongAnswers:
-    - Horizon Forbidden West
-    - God of War (2018)
-    - 'The Elder Scrolls: Skyrim'
-    - Assassin's Creed Origins
-    - Elden Ring
-  - id: kingdomhearts
-    displayName: Kingdom Hearts
-    hudGraphic: {fileID: 21300000, guid: 281485379ce3a5f4e93bcdeaaed9028a, type: 3}
-    acceptedAnswers: []
-    wrongAnswers:
-    - Ni No Kuni II
-    - Super Mario Sunshine
-    - The World Ends With You
-    - Final Fantasy VII
-    - Dark Cloud 2
-  - id: mario-odyssey
-    displayName: Super Mario Odyssey
-    hudGraphic: {fileID: 21300000, guid: 3bea646f04900cf4cba9eb87350ab79c, type: 3}
-    acceptedAnswers:
-    - mario odyssey
-    - smo
-    wrongAnswers:
-    - Kingdom Hearts 2
-    - Kingdom Hearts 3
-    - Breath of the Wild
-    - Hollow Knight
-    - Cuphead
-  - id: sekiro
-    displayName: Sekiro
-    hudGraphic: {fileID: 21300000, guid: fa1aec3125d998a4aa9f186d1b15db8e, type: 3}
-    acceptedAnswers:
-    - shadows die twice
-    wrongAnswers:
-    - Dark Souls 3
-    - Horizon Forbidden West
-    - Ghost of Tsushima
-    - Nioh
-    - 'The Elder Scrolls: Oblivion'
-  - id: witcher-3
-    displayName: The Witcher 3
-    hudGraphic: {fileID: 21300000, guid: 09f52f4499f5c554f9120bebb8f01e96, type: 3}
-    acceptedAnswers:
-    - wild hunt
-    - witcher 3
-    wrongAnswers:
-    - Darksiders
-    - 'Monster Hunter: Rise'
-    - Monster Hunter World
-    - The Witcher 2
-    - Ashen
-  - id: xenoblade-x
-    displayName: Xenoblade Chronicles X
-    hudGraphic: {fileID: 21300000, guid: 72381aec31ae1304bb9287efb27180ee, type: 3}
-    acceptedAnswers:
-    - xenoblade 10
-    - xenoblade x
-    wrongAnswers:
-    - Dauntless
-    - 'Monster Hunter: Rise'
-    - Xenoblade Chronicles 2
-    - 'Fire Emblem: Three Houses'
-    - Final Fantasy XIV
-  - id: zelda-botw
-    displayName: Breath of the Wild
-    hudGraphic: {fileID: 21300000, guid: 254ae7ab19816334c972da86d937e54a, type: 3}
-    acceptedAnswers:
-    - botw
-    wrongAnswers:
-    - Minecraft
-    - Genshin Impact
-    - 'Hyrule Warriors: Age of Calamity'
-    - 'Fire Emblem: Three Houses'
-    - The Witcher 3
+  - {fileID: 11400000, guid: 2842862c92bd9ca40a9938aff11cd011, type: 2}
+  - {fileID: 11400000, guid: b7d65fb8f82dcad4097de9646c636eb2, type: 2}
+  - {fileID: 11400000, guid: 5a8adc0f29784a74a9f16a4cd10261e3, type: 2}
+  - {fileID: 11400000, guid: 55a476625c203de49bb67aac3423e484, type: 2}
+  - {fileID: 11400000, guid: d64fd1a40a359c64d8ee108d4687804e, type: 2}
+  - {fileID: 11400000, guid: de36df928d1014340857c3f07e1f302f, type: 2}
+  - {fileID: 11400000, guid: ea1c81ba21358e943bf34ba4858813e6, type: 2}
+  - {fileID: 11400000, guid: 7c7b37bc1274bf346ba5a253b45a1d65, type: 2}
+  - {fileID: 11400000, guid: d1344ad07cb827c4ea54a72cb99aefa9, type: 2}
+  - {fileID: 11400000, guid: 063b30cda26ec4443933ae6b25375fec, type: 2}
+  - {fileID: 11400000, guid: cc6332f4e4df7be4996d5a5d1fa4f366, type: 2}
+  - {fileID: 11400000, guid: a209f341a8babf1428f6028ef8712d24, type: 2}
+  - {fileID: 11400000, guid: d690378e667ea5e47b67eb6abc0da333, type: 2}
+  - {fileID: 11400000, guid: ddb17074c4a17dd49a4eec8def9c8775, type: 2}
+  - {fileID: 11400000, guid: 17c698592ff575e4c802c982faa884b4, type: 2}

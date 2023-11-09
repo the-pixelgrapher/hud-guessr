@@ -11,7 +11,7 @@ public class HUDGraphic : MonoBehaviour
         QuizManager.current.InitGameData += InitHUDImage;
     }
 
-    public void InitHUDImage(GameDatabase.Metadata _gameData)
+    public void InitHUDImage(GameData _gameData)
     {
         hudGraphicImage.sprite = _gameData.hudGraphic;
         tweener.PlayIntroTween();
