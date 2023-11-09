@@ -5,7 +5,7 @@ using TMPro;
 
 public class QuizManager : MonoBehaviour
 {
-    public event System.Action<GameDatabase.Metadata> InitGameData;
+    public event System.Action<GameData> InitGameData;
     public event System.Action<GameMode> SetGameMode;
     public static QuizManager current;
 
@@ -37,8 +37,8 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private ProgressWidget progressWidget;
     [SerializeField] TMP_Text correctAnswerText;
 
-    private List<GameDatabase.Metadata> gameList;
-    private GameDatabase.Metadata chosenGame;
+    private List<GameData> gameList;
+    private GameData chosenGame;
     private bool isInit;
     private bool isAnswerSubmitted;
     private bool isPlaying;
@@ -47,7 +47,7 @@ public class QuizManager : MonoBehaviour
     private void Awake()
     {
         current = this;
-        gameList = new List<GameDatabase.Metadata>();
+        gameList = new List<GameData>();
         StartCoroutine(UnsetGameMode());
     }
 
@@ -156,12 +156,12 @@ public class QuizManager : MonoBehaviour
     private void GenerateGameList()
     {
         // Generate a random list of games of a specified amount
-        gameList = new List<GameDatabase.Metadata>();
+        gameList = new List<GameData>();
         int _amount = settings.numberOfRounds;
         _amount = Mathf.Clamp(_amount, 1, database.gameData.Length);
 
         // Add all games to temp collection
-        var _tempList = new List<GameDatabase.Metadata>();
+        var _tempList = new List<GameData>();
         for (int i = 0; i < database.gameData.Length; i++)
         {
             _tempList.Add(database.gameData[i]);
