@@ -29,6 +29,10 @@ public class QuizManager : MonoBehaviour
 
     [SerializeField] private GameDatabase database;
     [SerializeField] private GameModeData modeData;
+    
+    public GameDatabase Database => database;
+    public GameModeData ModeData => modeData;
+
     [SerializeField] private GameHistory history;
 
     [SerializeField] private MultiChoiceAnswer multiChoiceAnswer;
